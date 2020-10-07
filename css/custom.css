@@ -1,6 +1,140 @@
+
+.reveal .green {
+	/*color: lawngreen;*/
+	color: #69c242;
+}
+
+.reveal .blue {
+	/*color: lightskyblue;*/
+	color: #64bbe3;
+}
+
+.reveal .yellow {
+	color: #ffcc00;
+}
+
+.reveal .orange {
+	color: #ff7300;
+}
+
+.reveal .red {
+	/*color: crimson;*/
+	color: #cf2030;
+}
+
+.reveal b, .reveal strong {
+	/*color: lightskyblue;*/
+	color: #64bbe3;
+}
+
+/*.reveal em {
+	color: greenyellow;
+	font-style: normal;
+}*/
+
 .container{
     display: flex;
 }
 .col{
     flex: 1;
+}
+
+
+.theorem {
+  display:inline-block;
+  /*margin:2% auto;*/
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:0.3em;
+  /*line-height:1.5em;*/
+  border:solid 3px hsla(0, 0%, 75%, 1);
+}
+
+
+.reveal .references {
+	position: fixed;
+	bottom: 10px;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+}
+
+
+
+.title h1 {
+	font-size: 3em;
+}
+
+.title h4 {
+	color: gold;
+	font-size: 1.5em;
+}
+
+.title .social {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.title .authors {
+	margin-top: 3em;
+	font-size: 0.7em;
+    text-shadow: 0px 2px 3px #000;
+	line-height: 1em;
+}
+
+.title .authors a {
+	color: lightblue;
+}
+
+.title .footnote {
+	font-size: 0.4em;
+}
+
+ul li {
+	margin: .8em 0em;
+	line-height: 1.2em;
+}
+
+ul.tight li, .definition li, li ul li {
+	margin: 0.1em;
+}
+
+ol.agenda {
+	list-style-type: upper-roman;
+}
+
+.note-container {
+	position: relative;
+}
+
+.bottom-container {
+	position: absolute;
+	bottom: -1em;
+	text-align: center;
+	width: 100%;
+}
+
+aside.note {
+	font-size: 12pt;
+	text-align: left;
+	background-color: #333;
+	box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+	line-height: 1em;
+	padding: 1em;
+	margin-left: 2em;
+	vertical-align: center;
+	float: right;
+	width: 150px;
+}
+
+hr {
+	border: thin dotted #fff;
+}
+
+.bottom-container aside.note {
+	width: auto;
+	float: none;
+	margin: auto;
+	display: inline-block;
 }

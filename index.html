@@ -59,40 +59,40 @@
 				<section>
 					<header><h3>Research questions</h3></header>
 					<ul>
-						<li class="fragment">How to <span style="color:green">smoothly</span> interact with other agents ?</li>
-						<li class="fragment">Can we guarantee <span style="color:red">safety</span> ? </li>
+						<li class="fragment">How to <span class="green">smoothly</span> interact with other agents?</li>
+						<li class="fragment">Can we guarantee <span class="red">safety</span>?</li>
 					</ul>
 				</section>
 				<section>
 					<header><h3>The <strong>highway-env</strong> library</h3></header>
 					<div class="container">
 
-					<div class="col">
-						<img data-src="videos/highway-env/highway.gif" width="100%">
-						<img data-src="videos/highway-env/roundabout-env.gif" width="80%">
-						<img data-src="videos/highway-env/merge-env.gif" width="100%">
-					</div>
+						<div class="col">
+							<img data-src="videos/highway-env/highway.gif" width="100%">
+							<img data-src="videos/highway-env/roundabout-env.gif" width="80%">
+							<img data-src="videos/highway-env/merge-env.gif" width="100%">
+						</div>
 
-					<div class="col">
-						<img data-src="videos/highway-env/intersection-env.gif" width="70%">
-						<img data-src="videos/highway-env/parking-env.gif" width="70%">
-					</div>
+						<div class="col">
+							<img data-src="videos/highway-env/intersection-env.gif" width="70%">
+							<img data-src="videos/highway-env/parking-env.gif" width="70%">
+						</div>
 					</div>
 				</section>
 				<section>
 					<header><h3>Outline</h3></header>
 					<ol>
 						<li class="fragment">Model-based
-						<ul>
-							<li class="fragment" style="color:grey">Tree Search [ECML 2019, ACML 2020]</span></li>
-							<li class="fragment">Robust RL [CDC 2019, CDC 2020, NeurIPS 2020]</li>
-						</ul>
+							<ul>
+								<li class="fragment" style="color:grey">Tree Search [ECML 2019, ACML 2020]</span></li>
+								<li class="fragment">Robust RL [CDC 2019, CDC 2020, NeurIPS 2020]</li>
+							</ul>
 						</li>
 						<li class="fragment">Model-free
-						<ul>
-							<li class="fragment">Social attention</li>
-							<li class="fragment">Budgeted RL [NeurIPS 2019]</li>
-						</ul>
+							<ul>
+								<li class="fragment">Social attention</li>
+								<li class="fragment">Budgeted RL [NeurIPS 2019]</li>
+							</ul>
 						</li>
 					</ol>
 				</section>
@@ -113,40 +113,185 @@
 					<header><h3>How to tackle model bias?</h3></header>
 					<ol>
 						<li class="fragment"> Build a confidence <strong>region</strong> for the dynamics
-						\[\mathbb{P}\left[\color{red}{\theta}\in\color{red}{\mathcal{C}_{N,\delta}}\right]\geq 1-\delta\]
+							\[\mathbb{P}\left[\color{crimson}{\theta}\in\color{crimson}{\mathcal{C}_{N,\delta}}\right]\geq 1-\delta\]
 						</li>
 						<li class="fragment"> Plan <strong>robustly</strong> against the worst case outcome
-						\[\color{green}{\max_{\pi}} \color{red}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \bE \left[\sum_{t=0}^\infty \gamma^n R(x_t) \mid \color{red}{f_{\theta}}, \color{green}{\pi}\right]\]
+							\[\color{lawngreen}{\max_{\pi}} \color{crimson}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \bE \left[\sum_{t=0}^\infty \gamma^n R(x_t) \mid \color{crimson}{f_{\theta}}, \color{lawngreen}{\pi}\right]\]
 						</li>
-				</section>
-			</section>
-			<section>
-				<section><h3>Model-free</h3></section>
-			</section>
+					</section>
+					<section>
+						<header><h3>Confidence region for linear regression</h3></header>
+						<ul>
+							<li class="fragment"> Assume $f_\theta$ is <strong>linearly</strong> parametrized
+							\[ f_\theta(x, u) = \phi(x, u)^\top \theta + \psi(x, u)\]</li>
+							<li class="fragment"> Confidence ellipsoid
+								\[\small \|\theta-\theta_{N,\lambda}\|_{G_{N,\lambda}} \leq \beta_N(\delta)\]
+								\[
+								\scriptsize
+								\begin{aligned}
+								\theta_{N,\lambda} & = G_{N, \lambda}^{-1} \sum_{n=1}^N \Phi_n^\top \Sigma_p^{-1} y_n, & G_{N, \lambda} &= \sum_{n=1}^N \Phi_{n}^\top\Sigma_p^{-1}\Phi_{n}  + \lambda I_d
+								\end{aligned}
+								\]
+							</li>
+						</section>
+						<section>
+							<header><h3>Robust planning</h3></header>
+							<p>How to optimize the minimax objective?
+								\[\color{lawngreen}{\max_{\pi}} \color{crimson}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \bE \left[\sum_{t=0}^\infty \gamma^n R(x_t) \mid \color{crimson}{f_{\theta}}, \color{lawngreen}{\pi}\right]\]
+							</p>
+							<p align="left">Related work</p>
+							<ul>
+								<li class="fragment">Robust Dynamic Programming <span class="fragment red">(finite $\mathcal{S}$)</span></li>
+								<li class="fragment">Linear Quadratic Setting</li>
+							</ul>
+						</section>
+						<section>
+							<header><h3>Linear Quadratic Systems</h3></header>
+							<div class="container">
+								<div class="col">
+									<p>\[
+										\begin{aligned}
+										f(x, u) &= Ax + Bu\\
+										R(x, u) &= -x^\top Qx - u^\top R u
+										\end{aligned}
+										\]
+									</p>
+									<p align="left"><small>Dean et. al. [2019] cast the optimization problem as an SDP</small></p>
+								</div>
+								<div class="col">
+									<img data-src="images/robust/quadratic_w.png" width="60%">
+									<p><small><span class="red">Stabilization</span> problems only</small></p>
+								</div>
+							</div>
+						</section>
+						<section>
+							<header><h3>Obstacle avoidance tasks</h3></header>
+							<object data="images/robust/non-convex.svg" type="image/svg+xml" width="60%"
+							height="60%"
+							type="image/svg+xml"></object>
+							<p>Require <span class="red">non-convex, non-smooth</span> rewards</p>
+						</section>
+						<section>
+							<header><h3>Tree-based planning</h3></header>
+							<div class="r-stack">
+								<object class="fragment fade-in-then-out" data-fragment-index="0" data="images/robust/planning.svg" type="image/svg+xml" width="70%"
+								height="80%"
+								type="image/svg+xml"></object>
+								<object class="fragment" data-fragment-index="1" data="images/robust/planning1.svg" type="image/svg+xml" width="70%"
+								height="80%"
+								type="image/svg+xml"></object>
+							</div>
+							<ul>
+								<li class="fragment" data-fragment-index="1">Bound the set of <strong>reachable</strong> states under $\theta\in\cC_{N,\delta}$</li>
+								<!-- <li class="fragment" data-fragment-index="2">Evaluate a <strong>worst-case</strong> reward</li> -->
+							</ul>
+						</section>
+						<section>
+							<header><h3>Interval Prediction</h3></header>
+							<p align="left">Given $\theta\in\cC_{N,\delta}$, find \[\underline x(t) \leq x(t) \leq \overline x(t)\]</p>
+							<p align="left" class="fragment"> <strong>Assumption</strong>: $f$ depends linearly on $x$
+							\[
+							\scriptsize
+							\begin{aligned}
+							\dot{{x}}(t) & = \color{crimson}{A(\theta)}x(t) + Bu(t) + D\omega(t), \text{ where}\\
+							\color{crimson}{A(\theta)} & = A_0 + \sum_{i=1}^d\color{crimson}{\theta_i}\phi_i \\
+							\end{aligned}
+							\]</p>
+						</section>
+						<section>
+							<header><h3>Solution 1: interval arithmetic</h3></header>
+							<p class="theorem" align="left"><strong>Lemma</strong> Given $\color{crimson}{\underline{A}\leq A(\theta)\leq\overline{A}}$ and $\color{lightskyblue}{\underline{x}(t)\leq x(t)\leq \overline{x}(t)}$,
+							\[
+							\scriptsize
+							\begin{aligned}
+							\dot{\underline{x}}(t) = \underline{A}^{+}\underline{x}^{+}(t)-\overline{A}^{+}\underline{x}^{-}(t)-\underline{A}^{-}\overline{x}^{+}(t) +\overline{A}^{-}\overline{x}^{-}(t) +Bu(t) + D^{+}\underline{\omega}(t)-D^{-}\overline{\omega}(t),\\
+\dot{\overline{x}}(t) = \overline{A}^{+}\overline{x}^{+}(t)-\underline{A}^{+}\overline{x}^{-}(t)-\overline{A}^{-}\underline{x}^{+}(t)+\underline{A}^{-}\underline{x}^{-}(t)\nonumber+Bu(t) + D^{+}\overline{\omega}(t)-D^{-}\underline{\omega}(t),
+							\end{aligned}
+							\]
+						    ensures the inclusion property.</p>
+						</section>
+						<section>
+							<header><h3>Solution 1: stability?</header>
+							<p>$\dot x(t) = -\theta x(t) + \omega(t)$,<br><br><small>with $\theta\in[1, 2]$ and $\omega(t) \in [-0.05, 0.05]$.</small></p>
+							<object data="images/robust/observer.svg" type="image/svg+xml" width="75%" type="image/svg+xml"></object>
+						</section>
+						<section style="font-size: .7em">
+							<header><h3>Solution 2: polytopic structure</h3></header>
+							<p align="left">Under polytopic uncertainty around <span class="red">$A_0$ Metzler</span> \[A(\theta) = \color{crimson}{A_0} + \sum_i\alpha_i\Delta A_i,\]</p>
+							<p class="theorem" align="left"> <strong>Theorem (CDC 2019)</strong> The predictor
+							\[
+							\scriptsize
+							\begin{aligned}
+							\dot{\underline{x}}(t) & = \color{crimson}{A_{0}}\underline{x}(t)-\Delta A_{+}\underline{x}^{-}(t)-\Delta A_{-}\overline{x}^{+}(t) +Bu(t)+D^{+}\underline{\omega}(t)-D^{-}\overline{\omega}(t),\\
+							\dot{\overline{x}}(t) & = \color{crimson}{A_{0}}\overline{x}(t)+\Delta A_{+}\overline{x}^{+}(t)+\Delta A_{-}\underline{x}^{-}(t) +Bu(t)+D^{+}\overline{\omega}(t)-D^{-}\underline{\omega}(t), \\
+							\end{aligned}
+							\]
+						    ensures the inclusion property.</p>
+						    <!-- <aside id="references" class="references">[CDC 2019]</aside> -->
+						</section>
+						<section  style="font-size: .7em">
+							<header><h3>Solution 2: stability</h3></header>
+							<p class="theorem" align="left"><strong>Theorem (CDC 2019)</strong> If there exist diagonal matrices $P$, $Q$, $Q_{+}$, $Q_{-}$, $Z_{+}$, $Z_{-}$, $\Psi_{+}$, $\Psi_{-}$, $\Psi$, $\Gamma\in\Real^{2n\times2n}$ such that
+								\[
+								\begin{aligned}
+								\color{lightskyblue}{\Upsilon\preceq0},\;P+\min\{Z_{+},Z_{-}\}>0,\;\Gamma>0,\\
+								Q+\min\{Q_{+},Q_{-}\}+2\min\{\Psi_{+},\Psi_{-}\}>0,
+								\end{aligned}
+								\]
+								where
+								\[
+								\Upsilon_{11}=\mathcal{A}^{\top}P+P\mathcal{A}+Q,\;\Upsilon_{12}=\mathcal{A}^{\top}Z_{+}+PR_{+}+\Psi_{+},\\
+								\Upsilon_{13}=\mathcal{A}^{\top}Z_{-}+PR_{-}+\Psi_{-},\;\Upsilon_{22}=Z_{+}R_{+}+R_{+}^{\top}Z_{+}+Q_{+},\\
+								\Upsilon_{23}=Z_{+}R_{-}+R_{+}^{\top}Z_{-}+\Psi,\;\Upsilon_{33}=Z_{-}R_{-}+R_{-}^{\top}Z_{-}+Q_{-},\\
+								\mathcal{A}=\left[\begin{array}{cc}
+								A_{0} & 0\\
+								0 & A_{0}
+								\end{array}\right],\;R_{+}=\left[\begin{array}{cc}
+								0 & -\Delta A_{-}\\
+								0 & \Delta A_{+}
+								\end{array}\right],\;R_{-}=\left[\begin{array}{cc}
+								\Delta A_{+} & 0\\
+								-\Delta A_{-} & 0
+								\end{array}\right]
+								\]
+								then the predictor is <strong>input-to-state stable</strong> <em>w.r.t.</em> the disturbance $\underline{\omega}$, $\overline{\omega}$.
+						</section>
+						<section>
+							<header><h3>Solution 2: stability</h3></header>
+							<object data="images/robust/predictor.svg" type="image/svg+xml" width="75%" type="image/svg+xml"></object>
+						</section>
+					</section>
 
-		</div>
-	</div>
 
-	<script src="dist/reveal.js"></script>
-	<script src="plugin/notes/notes.js"></script>
-	<script src="plugin/markdown/markdown.js"></script>
-	<script src="plugin/highlight/highlight.js"></script>
-	<script src="plugin/math/math.js"></script>
-	<script>
+
+					<section>
+						<section><h3>Model-free</h3></section>
+					</section>
+
+				</div>
+			</div>
+
+			<script src="dist/reveal.js"></script>
+			<script src="plugin/notes/notes.js"></script>
+			<script src="plugin/markdown/markdown.js"></script>
+			<script src="plugin/highlight/highlight.js"></script>
+			<script src="plugin/math/math.js"></script>
+			<script>
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/
 		// - https://revealjs.com/config/
 		Reveal.initialize({
 			hash: true,
 			math: {
-		      mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
-		      config: 'TeX-AMS_HTML-full',
+				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				config: 'TeX-AMS_HTML-full',
 		      // pass other options into `MathJax.Hub.Config()`
 		      TeX: { Macros: {
+		      	Real: "{\\mathbb{R}}",
 		      	cC: "{\\mathcal{C}}",
 		      	bE: "{\\mathbb{E}}",
 		      }}
-		    },
+		  },
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
 		});

@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Safe and Efficient Reinforcement Learning for Behavioural Planning in Autonomous Driving</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+	<link rel="stylesheet" href="css/custom.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section>
+				<h3>Safe and Efficient <br>Reinforcement Learning</h3>
+				<h4>for Behavioural Planning <br> in Autonomous Driving</h4>
+				<p>
+					<small>Edouard Leurent</small>
+				</p>
+				<footer>
+					<img data-src="images/inria_white.png" height="100">
+					<img data-src="images/renault_white.png" height="100">
+				</footer>
+			</section>
+
+
+			<section>
+				<section>
+					<header><h3>Introduction</h3></header>
+				</section>
+				<section>
+					<header><h3>Motivation</h3></header>
+					<ul>
+						<li>Renault ADAS department</li>
+						<li>ACC / LKA / AEB / AES</li>
+					</ul>
+				</section>
+				<section>
+					<header><h3>Failure modes</h3></header>
+					<p>Access ramp</p>
+				</section>
+				<section>
+					<header><h3>Failure modes</h3></header>
+					<video data-autoplay muted loop controls data-src="videos/waymo.mp4" type="video/mp4"></video>
+				</section>
+				<section>
+					<header><h3>Failure modes</h3></header>
+					<video data-autoplay muted loop controls data-src="videos/navya_small.mp4" type="video/mp4"></video>
+				</section>
+				<section>
+					<header><h3>Research questions</h3></header>
+					<ul>
+						<li class="fragment">How to <span style="color:green">smoothly</span> interact with other agents ?</li>
+						<li class="fragment">Can we guarantee <span style="color:red">safety</span> ? </li>
+					</ul>
+				</section>
+				<section>
+					<header><h3>The <strong>highway-env</strong> library</h3></header>
+					<div class="container">
+
+					<div class="col">
+						<img data-src="videos/highway-env/highway.gif" width="100%">
+						<img data-src="videos/highway-env/roundabout-env.gif" width="80%">
+						<img data-src="videos/highway-env/merge-env.gif" width="100%">
+					</div>
+
+					<div class="col">
+						<img data-src="videos/highway-env/intersection-env.gif" width="70%">
+						<img data-src="videos/highway-env/parking-env.gif" width="70%">
+					</div>
+					</div>
+				</section>
+				<section>
+					<header><h3>Outline</h3></header>
+					<ol>
+						<li class="fragment">Model-based
+						<ul>
+							<li class="fragment" style="color:grey">Tree Search [ECML 2019, ACML 2020]</span></li>
+							<li class="fragment">Robust RL [CDC 2019, CDC 2020, NeurIPS 2020]</li>
+						</ul>
+						</li>
+						<li class="fragment">Model-free
+						<ul>
+							<li class="fragment">Social attention</li>
+							<li class="fragment">Budgeted RL [NeurIPS 2019]</li>
+						</ul>
+						</li>
+					</ol>
+				</section>
+			</section>
+
+
+			<section>
+				<section><h3>Model-based</h3></section>
+				<section>
+					<header><h3>Constrained optimization</h3></header>
+					<video data-autoplay muted loop data-src="videos/robust/oracle.mp4" type="video/mp4"></video>
+				</section>
+				<section>
+					<header><h3>Model Bias</h3></header>
+					<video data-autoplay muted loop data-src="videos/robust/model-bias.mp4" type="video/mp4"></video>
+				</section>
+				<section>
+					<header><h3>How to tackle model bias?</h3></header>
+					<ol>
+						<li class="fragment"> Build a confidence <strong>region</strong> for the dynamics
+						\[\mathbb{P}\left[\color{red}{\theta}\in\color{red}{\mathcal{C}_{N,\delta}}\right]\geq 1-\delta\]
+						</li>
+						<li class="fragment"> Plan <strong>robustly</strong> against the worst case outcome
+						\[\color{green}{\max_{\pi}} \color{red}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \bE \left[\sum_{t=0}^\infty \gamma^n R(x_t) \mid \color{red}{f_{\theta}}, \color{green}{\pi}\right]\]
+						</li>
+				</section>
+			</section>
+			<section>
+				<section><h3>Model-free</h3></section>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			math: {
+		      mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+		      config: 'TeX-AMS_HTML-full',
+		      // pass other options into `MathJax.Hub.Config()`
+		      TeX: { Macros: {
+		      	cC: "{\\mathcal{C}}",
+		      	bE: "{\\mathbb{E}}",
+		      }}
+		    },
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+		});
+	</script>
+</body>
+</html>

@@ -24,10 +24,9 @@
 				<p>
 					<medium><a href="http://edouardleurent.com">Edouard Leurent</a></medium>
 				</p>
-				<p><small>Supervisors</small><hr>
-					<small><a href="http://odalricambrymmaillard.neowordpress.fr/">Odalric-Ambrym Maillard</a>, <a href="http://researchers.lille.inria.fr/~efimov/">Denis Efimov</a>,<br><a href="http://researchers.lille.inria.fr/%7Eperruque/">Wilfrid Perruquetti</a>, <a href="https://fr.linkedin.com/in/yann-blanco-1038a717">Yann Blanco</a></small>
+				<p><small>Supervised by<br><a href="http://odalricambrymmaillard.neowordpress.fr/">Odalric-Ambrym Maillard</a>, <a href="http://researchers.lille.inria.fr/~efimov/">Denis Efimov</a>,<br><a href="http://researchers.lille.inria.fr/%7Eperruque/">Wilfrid Perruquetti</a>, <a href="https://fr.linkedin.com/in/yann-blanco-1038a717">Yann Blanco</a></small>
 				</p>
-				<p>Friday, October 30th 2020</p>
+				<p>Friday, October 30<sup>th</sup>, 2020</p>
 				<footer>
 					<img data-src="images/inria.png" height="50">
 					<img data-src="images/renault.png" height="50">
@@ -84,16 +83,16 @@
 				<section>
 					<header><h3>Outline</h3></header>
 					<ol>
-						<li class="fragment">Model-based
+						<li class="fragment"><a href="#/model-based">Model-based</a>
 							<ul>
-								<li class="fragment" style="color:grey">Tree Search [ECML 2019, ACML 2020]</span></li>
-								<li class="fragment">Robust RL [CDC 2019, CDC 2020, NeurIPS 2020]</li>
+								<li class="fragment" style="color:grey"><a href="#/planning">Tree-based planning [ECML 2019, ACML 2020]</span></a></li>
+								<li class="fragment"><a href="#/robust-rl">Robust RL [CDC 2019, CDC 2020, NeurIPS 2020]</a></li>
 							</ul>
 						</li>
-						<li class="fragment">Model-free
+						<li class="fragment"><a href="#/model-free">Model-free</a>
 							<ul>
-								<li class="fragment">Social attention</li>
-								<li class="fragment">Budgeted RL [NeurIPS 2019]</li>
+								<li class="fragment"><a href="#/social-attention">Social attention</a></li>
+								<li class="fragment"><a href="#/budgeted-rl">Budgeted RL [NeurIPS 2019]</a></li>
 							</ul>
 						</li>
 					</ol>
@@ -102,7 +101,7 @@
 
 
 			<section>
-				<section><h3>Model-based</h3></section>
+				<section id="model-based"><h3>Model-based</h3></section>
 				<section>
 					<header><h3>Constrained optimization</h3></header>
 					<video data-autoplay muted loop data-src="videos/robust/oracle.mp4" type="video/mp4"></video>
@@ -309,16 +308,18 @@
 					<header><h3>Bounded suboptimality</h3></header>
 					<div class="theorem">
 						<p align="left"><strong>Theorem (NeurIPS 2020)</strong> Under two conditions:
-						<ol>
-							<li class="fragment">Lipschitz reward $R$;</li>
-							<li class="fragment">Stability condition: there exist $P>0,\,Q_0,\,\rho,\,N_0$ such that
-							\[\forall \color{orange}{N}>N_0,\quad\begin{bmatrix}
-								\color{orange}{A_N}^\top P + P \color{orange}{A_N} + Q_0 & P|D|  \\
-								|D|^\top P & -\rho I_r \\
-								\end{bmatrix}< 0;\]
-							</li>
-						</ol></p>
-						<p align="left" class="fragment">with probability $1-\delta$,
+							<ol>
+								<li class="fragment">Lipschitz reward $R$;</li>
+								<li class="fragment">Stability condition: there exist $P>0,\,Q_0,\,\rho,\,N_0$ such that
+									\[\forall \color{orange}{N}>N_0,\quad\begin{bmatrix}
+									\color{orange}{A_N}^\top P + P \color{orange}{A_N} + Q_0 & P|D|  \\
+									|D|^\top P & -\rho I_r \\
+									\end{bmatrix}< 0;\]
+								</li>
+							</ol>
+						</p>
+						<p align="left" class="fragment">
+							with probability $1-\delta$,
 							\[
 							\underbrace{V(a_\star)}_{\substack{\text{optimal}\\ \text{performance}}} - \underbrace{V(a_K)}_{\substack{\text{true}\\ \text{performance}}} \leq
 							\color{crimson}{\underbrace{\Delta_\omega}_{\substack{\text{robustness to}\\ \text{disturbances}}}} + \color{lightskyblue}{\underbrace{\mathcal{O}\left(\frac{\beta_N(\delta)^2}{\lambda_{\min}(G_{N,\lambda})}\right)}_{\text{estimation error}}} +
@@ -333,14 +334,14 @@
 						<p align="left"><strong>Corollary (NeurIPS 2020)</strong> Under an additional <strong>persistent excitation</strong> (PE) assumption:
 							\[\exists \underline{\phi},\overline{\phi}>0: \forall n\geq n_0,\quad \underline{\phi}^2 \leq \lambda_{\min}(\Phi_{n}^\top\Sigma_{p}^{-1}\Phi_{n}) \leq \overline{\phi}^2,\]
 							<span class="fragment" data-fragment-index="1">
-							the stability condition 2. can be relaxed to its limit:
-							$$\begin{bmatrix}
-							\color{orange}{A(\theta)}^\top P + P \color{orange}{A(\theta)} + Q_0 & P|D|  \\
-							|D|^\top P & -\rho I_r \\
-							\end{bmatrix}< 0;$$
+								the stability condition 2. can be relaxed to its limit:
+								$$\begin{bmatrix}
+								\color{orange}{A(\theta)}^\top P + P \color{orange}{A(\theta)} + Q_0 & P|D|  \\
+								|D|^\top P & -\rho I_r \\
+								\end{bmatrix}< 0;$$
 							</span>
 							<span class="fragment" data-fragment-index="2">
-							and the bound takes the more explicit form
+								and the bound takes the more explicit form
 							</span>
 						</p>
 						<p class="fragment" data-fragment-index="2">
@@ -351,10 +352,196 @@
 						</p>
 					</div>
 				</section>
+				<section>
+					<header><h3>Experiment: obstacle avoidance</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/1_oracle.mp4" type="video/mp4"></video>
+						<figcaption>Oracle dynamics $\color{orange}{A(\theta)}$</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Experiment: obstacle avoidance</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/1_plan_nominal.mp4" type="video/mp4"></video>
+						<figcaption>Estimated dynamics $\color{lightskyblue}{A(\hat{\theta}_{N,\lambda})}$</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Experiment: obstacle avoidance</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/1_robust.mp4" type="video/mp4"></video>
+						<figcaption>Robust planning with $\color{crimson}{\cC_{N,\delta}}$</figcaption>
+					</figure>
+				</section>
+				<!-- <section data-background-video="videos/robust/1_robust.mp4" data-background-video-loop data-background-video-muted>
+					<p><br><br><br><br><br><br><br><br><br><br></p>
+					<h3 style="color:black; -webkit-text-stroke-width: 1px;-webkit-text-stroke-color: white;">Robust planning with $\color{crimson}{\cC_{N,\delta}}$</h3>
+				</section> -->
+				<section>
+					<header><h3>Results</h3></header>
+					<table>
+						<thead>
+							<tr>
+								<th>Performance</th>
+								<th>failures</th>
+								<th>min</th>
+								<th>avg $\pm$ std</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Oracle</td>
+								<td>$0\%$</td>
+								<td>$11.6$</td>
+								<td>$14.2 \pm 1.3$</td>
+							</tr>
+							<tr>
+								<td>Nominal</td>
+								<td>$4\%$</td>
+								<td>$2.8$</td>
+								<td><strong>$13.8 \pm 2.0$</strong></td>
+							</tr>
+							<tr>
+								<td>DQN (trained)</td>
+								<td>$6\%$</td>
+								<td>$1.7$</td>
+								<td>$12.3 \pm 2.5$</td>
+							</tr>
+							<tr>
+								<td>Robust</td>
+								<td><strong>$0\%$</strong></td>
+								<td><strong>$10.4$</strong></td>
+								<td>$13.0 \pm 1.5$</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<header><h3>What if our assumptions are wrong?</h3></header>
+					<p class="fragment">$$\dot{{x}}(t) = \left(\color{magenta}{A_0} + \sum_{i=1}^d{\theta_i}\color{magenta}{\phi_i}\right)x(t) + Bu(t) + D\omega(t)$$</p>
+					<p class="fragment">With our <strong>statistical tools</strong>, we can test the <strong>adequacy</strong>
+						<ul>
+							<li class="fragment">of the model $\color{magenta}{(A_0,\phi)}$</li>
+							<li class="fragment">with the observed data  $x(t_0),x(t_1),\dots$.</li>
+						</ul>
+					</p>
+				</section>
+				<section>
+					<header><h3>Multi-model extension</h3></header>
+					<div class="container">
+						<div class="col">
+					<p>Use <strong>multiple</strong> models $\color{magenta}{(A_0^{(i)},\phi^{(i)})}$</p>
+							<ul style="font-size: 75%">
+								<li class="fragment" data-fragment-index="0"><strong>Maintain</strong> the set of valid models</li>
+								<li class="fragment" data-fragment-index="1"><strong>Propagate</strong> all trajectory intervals</li>
+								<li class="fragment" data-fragment-index="2"><strong>Evaluate</strong> the worst-case outcome</li>
+							</ul>
+						</div>
+						<div class="col r-stack" style="vertical-align: middle;">
+								<object class="fragment fade-in-then-out" data-fragment-index="1" data="images/robust/multi-model.svg" type="image/svg+xml" width="400" type="image/svg+xml"></object>
+								<object class="fragment" data-fragment-index="2" data="images/robust/robust-control-tree.svg" type="image/svg+xml" width="55%" type="image/svg+xml"></object>
+						</div>
+					</div>
+				</section>
+				<section>
+					<header><h3>Experiment: intersection (1/5)</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/v_1_oracle.mp4" type="video/mp4" width="50%"></video>
+						<figcaption>Oracle dynamics $\color{orange}{A(\theta)}$</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Experiment: intersection (1/5)</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/v_1_robust.mp4" type="video/mp4" width="50%"></video>
+						<figcaption>Robust planning with $\color{crimson}{\cC_{N,\delta}}$</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Experiment: intersection (2/5)</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/v_10_robust.mp4" type="video/mp4" width="50%"></video>
+						<figcaption>Anticipates potential threats</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Experiment: intersection (3/5)</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/v_4_robust.mp4" type="video/mp4" width="50%"></video>
+						<figcaption>Conservative on crowded intersections</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Experiment: intersection (4/5)</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/v_9_robust.mp4" type="video/mp4" width="50%"></video>
+						<figcaption>But still efficient when confident</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Experiment: intersection (5/5)</h3></header>
+					<figure>
+						<video data-autoplay muted loop data-src="videos/robust/v_7_robust.mp4" type="video/mp4" width="50%"></video>
+						<figcaption>And at times, even quite aggressive</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Results</h3></header>
+					<table>
+						<thead>
+							<tr>
+								<th>Performance</th>
+								<th>failures</th>
+								<th>min</th>
+								<th>avg $\pm$ std</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Oracle</td>
+								<td>$0\%$</td>
+								<td>$6.9$</td>
+								<td>$7.4 \pm 0.5$</td>
+							</tr>
+							<tr>
+								<td>Nominal 1</td>
+								<td>$4\%$</td>
+								<td>$5.2$</td>
+								<td><strong>$7.3 \pm 1.5$</strong></td>
+							</tr>
+							<tr>
+								<td>Nominal 2</td>
+								<td>$33\%$</td>
+								<td>$3.5$</td>
+								<td>$6.4 \pm 0.3$</td>
+							</tr>
+							<tr>
+								<td>DQN (trained)</td>
+								<td>$3\%$</td>
+								<td>$5.4$</td>
+								<td>$6.3 \pm 0.6$</td>
+							</tr>
+							<tr>
+								<td>Robust</td>
+								<td><strong>$0\%$</strong></td>
+								<td><strong>$6.8$</strong></td>
+								<td>$7.1 \pm 0.3$</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section data-background-image="images/robust/road.jpg">
+					<h3 style="color:black">Limitation of the robust approach</h3>
+					<p><br><br><br><br><br><br><br><br><br><br></p>
+				</section>
+				<section>
+					<header><h3>Limitation of the robust approach</h3></header>
+					<img class="flip-vertically" data-src="videos/robust/stuck.gif" width="100%">
+				</section>
 			</section>
 
 			<section>
-				<section><h3>Model-free</h3></section>
+				<section id="model-free"><h3>Model-free</h3></section>
 			</section>
 
 		</div>

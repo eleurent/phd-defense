@@ -1,6 +1,6 @@
 
 .reveal .green {
-	/*color: lawngreen;*/
+	/*color: limegreen;*/
 	color: #69c242;
 }
 
@@ -27,11 +27,7 @@
 	color: #64bbe3;
 }
 
-/*.reveal em {
-	color: greenyellow;
-	font-style: normal;
-}*/
-
+/* Two-columns */
 .container{
     display: flex;
 }
@@ -43,7 +39,7 @@
 .theorem {
   display:inline-block;
   /*margin:2% auto;*/
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  /*border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;*/
   padding:0.3em;
   /*line-height:1.5em;*/
   border:solid 3px hsla(0, 0%, 75%, 1);
@@ -58,6 +54,10 @@
 	text-align: center;
 }
 
+
+.reveal figure img {
+	margin: 10px 0;
+}
 
 
 .title h1 {
@@ -137,4 +137,16 @@ hr {
 	float: none;
 	margin: auto;
 	display: inline-block;
+}
+
+
+/* Allow spans to grow and shrink, see https://github.com/hakimel/reveal.js/pull/2338/files */
+.reveal .slides section span.fragment.shrink.tiny.visible {
+  font-size: 40%;
+}
+.reveal .slides section span.fragment.shrink.visible {
+  font-size: 70%;
+}
+.reveal .slides section span.fragment.grow.visible {
+  font-size: 130%;
 }

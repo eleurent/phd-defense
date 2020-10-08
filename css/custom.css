@@ -38,10 +38,8 @@
 
 .theorem {
   display:inline-block;
-  /*margin:2% auto;*/
   /*border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;*/
   padding:0.3em;
-  /*line-height:1.5em;*/
   border:solid 3px hsla(0, 0%, 75%, 1);
 }
 
@@ -59,14 +57,13 @@
 	margin: 10px 0;
 }
 
-
-.title h1 {
-	font-size: 3em;
+.title {
+	color: white;
 }
 
 .title h4 {
-	color: gold;
-	font-size: 1.5em;
+	text-shadow: 0px 2px 3px #000;
+	-webkit-text-stroke: 1px black;
 }
 
 .title .social {
@@ -77,14 +74,13 @@
 }
 
 .title .authors {
-	margin-top: 3em;
-	font-size: 0.7em;
+	font-size: 0.8em;
     text-shadow: 0px 2px 3px #000;
 	line-height: 1em;
 }
 
 .title .authors a {
-	color: lightblue;
+	color: white;
 }
 
 .title .footnote {

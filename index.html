@@ -419,27 +419,23 @@
 				<section>
 					<header><h3>What if our assumptions are wrong?</h3></header>
 					<p class="fragment">$$\dot{{x}}(t) = \left(\color{magenta}{A_0} + \sum_{i=1}^d{\theta_i}\color{magenta}{\phi_i}\right)x(t) + Bu(t) + D\omega(t)$$</p>
-					<p class="fragment">With our <strong>statistical tools</strong>, we can test the <strong>adequacy</strong>
-						<ul>
-							<li class="fragment">of the model $\color{magenta}{(A_0,\phi)}$</li>
-							<li class="fragment">with the observed data  $x(t_0),x(t_1),\dots$.</li>
-						</ul>
+					<p class="fragment" style="text-align: justify;">With our <strong>statistical tools</strong>, we can test the <strong>adequacy</strong> <span class="fragment">of the model $\color{magenta}{(A_0,\phi)}$</span> <span class="fragment">with the observed data $x(t_0)$, $x(t_1),\dots$.</span>
 					</p>
 				</section>
-				<section>
+				<section style="font-size: 90%;">
 					<header><h3>Multi-model extension</h3></header>
 					<div class="container">
 						<div class="col">
 					<p>Use <strong>multiple</strong> models $\color{magenta}{(A_0^{(i)},\phi^{(i)})}$</p>
-							<ul style="font-size: 75%">
+							<ul>
 								<li class="fragment" data-fragment-index="0"><strong>Maintain</strong> the set of valid models</li>
 								<li class="fragment" data-fragment-index="1"><strong>Propagate</strong> all trajectory intervals</li>
 								<li class="fragment" data-fragment-index="2"><strong>Evaluate</strong> the worst-case outcome</li>
 							</ul>
 						</div>
-						<div class="col r-stack" style="vertical-align: middle;">
-								<object class="fragment fade-in-then-out" data-fragment-index="1" data="images/robust/multi-model.svg" type="image/svg+xml" width="400" type="image/svg+xml"></object>
-								<object class="fragment" data-fragment-index="2" data="images/robust/robust-control-tree.svg" type="image/svg+xml" width="55%" type="image/svg+xml"></object>
+						<div style="flex: 0.6;" class="r-stack" style="vertical-align: middle;">
+							<img class="fragment fade-in-then-out" data-fragment-index="1" width="300" src="images/robust/multi-model.svg">
+							<img class="fragment fade-in-then-out" data-fragment-index="2" width="300" src="images/robust/robust-control-tree.svg">
 						</div>
 					</div>
 				</section>

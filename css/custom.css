@@ -44,6 +44,22 @@
 }
 
 
+li.cross {
+  list-style-type: '❌';
+  padding-inline-start: 1ch;
+}
+
+li.check {
+  list-style-type: '✔️';
+  padding-inline-start: 1ch;
+}
+
+li.imply {
+  list-style-type: '👉';
+  padding-inline-start: 1ch;
+}
+
+
 .reveal .references {
 	position: fixed;
 	bottom: 10px;
@@ -51,7 +67,6 @@
 	margin: auto;
 	text-align: center;
 }
-
 
 .reveal figure img {
 	margin: 10px 0;

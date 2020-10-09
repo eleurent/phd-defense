@@ -61,7 +61,7 @@
 					<header><h3>Research questions</h3></header>
 					<ul>
 						<li class="fragment">How to <span class="green">smoothly</span> interact with other agents?</li>
-						<li class="fragment">Can we guarantee <span class="red">safety</span>?</li>
+						<li class="fragment">Can we guarantee <span class="red">safety</span> under uncertainty?</li>
 					</ul>
 				</section>
 				<section>
@@ -117,7 +117,7 @@
 							\[\mathbb{P}\left[\color{orange}{\theta}\in\color{crimson}{\mathcal{C}_{N,\delta}}\right]\geq 1-\delta\]
 						</li>
 						<li class="fragment"> Plan <strong>robustly</strong> against the worst case outcome
-							\[\color{limegreen}{\max_{\pi}} \color{crimson}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \bE \left[\sum_{t=0}^\infty \gamma^n R(x_t) \mid \color{crimson}{f_{\theta}}, \color{limegreen}{\pi}\right]\]
+							\[\color{limegreen}{\max_{\pi}} \color{crimson}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \expectedvalue \left[\sum_{t=0}^\infty \gamma^n R(x_t) \middle| \color{crimson}{f_{\theta}}, \color{limegreen}{\pi}\right]\]
 						</li>
 					</ol>
 				</section>
@@ -138,12 +138,12 @@
 				<section>
 					<header><h3>Robust planning</h3></header>
 					<p>How to optimize the minimax objective?
-						\[\color{limegreen}{\max_{\pi}} \color{crimson}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \bE \left[\sum_{t=0}^\infty \gamma^n R(x_t) \mid \color{crimson}{f_{\theta}}, \color{limegreen}{\pi}\right]\]
+						\[\color{limegreen}{\max_{\pi}} \color{crimson}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \expectedvalue \left[\sum_{t=0}^\infty \gamma^n R(x_t) \middle| \color{crimson}{f_{\theta}}, \color{limegreen}{\pi}\right]\]
 					</p>
 					<p class="fragment" align="left">Related work</p>
 					<ul>
-						<li class="fragment">Robust Dynamic Programming <span class="fragment red">(finite $\mathcal{S}$)</span></li>
-						<li class="fragment">Linear Quadratic Setting <span class="fragment">(<span class="green">continuous $\mathcal{S}$</span><!-- , <span class="fragment red">but...</span> -->)</span></li>
+						<li class="fragment cross">Robust Dynamic Programming <span class="fragment red">(finite $\mathcal{S}$)</span></li>
+						<li class="fragment check">Linear Quadratic Setting <span class="fragment green">(continuous $\mathcal{S}$)</span></li>
 					</ul>
 				</section>
 				<section>
@@ -159,32 +159,26 @@
 						<div class="col fragment">
 							<figure>
 								<img data-src="images/robust/quadratic_w.png" width="55%">
-								<figcaption><span class="red">stabilization</span> only</figcaption>
+								<figcaption>❌<span class="red">stabilization</span> only</figcaption>
 							</figure>
 						</div>
 					</div>
 				</section>
 				<section>
 					<header><h3>Obstacle avoidance tasks</h3></header>
-					<object data="images/robust/non-convex.svg" type="image/svg+xml" width="60%"
-					height="60%"
-					type="image/svg+xml"></object>
+					<img data-src="images/robust/non-convex.svg" width="80%">
 					<p>Require <span class="red">non-convex, non-smooth</span> rewards</p>
 				</section>
 				<section>
 					<header><h3>Tree-based planning</h3></header>
 					<div class="r-stack">
-						<object class="fragment fade-in-then-out" data-fragment-index="0" data="images/robust/planning.svg" type="image/svg+xml" width="70%"
-						height="80%"
-						type="image/svg+xml"></object>
-						<object class="fragment" data-fragment-index="1" data="images/robust/planning1.svg" type="image/svg+xml" width="70%"
-						height="80%"
-						type="image/svg+xml"></object>
+						<img class="fragment fade-in-then-semi-out" data-fragment-index="0" data-src="images/robust/planning.svg">
+						<img class="fragment" data-fragment-index="2" data-src="images/robust/planning1.svg">
 					</div>
 					<ul>
-						<li class="fragment" data-fragment-index="0">Handle a <span class="red">single</span> known dynamics</li>
-						<li class="fragment" data-fragment-index="1">Bound the set of <strong>reachable</strong> states under $\theta\in\cC_{N,\delta}$</li>
-						<!-- <li class="fragment" data-fragment-index="2">Evaluate a <strong>worst-case</strong> reward</li> -->
+						<li class="fragment check" data-fragment-index="0"><span class="green">No assumption</span> on dynamics $f$ or reward $R$</li>
+						<li class="fragment cross" data-fragment-index="1">Handle a <span class="red">single</span> known dynamics</li>
+						<li class="fragment imply" data-fragment-index="2">Bound the set of <strong>reachable</strong> states under $\color{orange}{\theta\in\cC_{N,\delta}}$</li>
 					</ul>
 				</section>
 				<section>
@@ -199,7 +193,7 @@
 						\end{aligned}
 					\]</p>
 				</section>
-				<section>
+				<section style="font-size: 90%;">
 					<header><h3>Solution 1: interval arithmetic</h3></header>
 					<p class="theorem" align="left"><strong>Lemma</strong> Given $\color{crimson}{\underline{A}\leq A(\theta)\leq\overline{A}}$ and $\color{lightskyblue}{\underline{x}(t)\leq x(t)\leq \overline{x}(t)}$,
 						<span class="fragment">
@@ -215,16 +209,16 @@
 					</p>
 				</section>
 				<section>
-					<header><h3>But is is stable?</h3></header>
+					<header><h3>But is it stable?</h3></header>
 					<p>$\dot x(t) = -\color{orange}{\theta} x(t) + \omega(t),
 						\quad\left\{\begin{array}{l}
 						\small \color{orange}{\theta\in[1, 2]}\\
 						\small\omega(t) \in [-0.05, 0.05]
 					\end{array}\right.$</p>
-					<object class="fragment" data="images/robust/observer.svg" type="image/svg+xml" width="75%" type="image/svg+xml"></object>
+					<img class="fragment" data-src="images/robust/observer.svg" width="70%"></object>
 				</section>
 				<section style="font-size: .7em">
-					<header><h3>Solution 2: polytopic structure</h3></header>
+					<header><h3>Novel predictor: polytopic structure</h3></header>
 					<p align="left">Under polytopic uncertainty around <span class="red">$A_0$ Metzler</span> \[A(\theta) = \color{crimson}{A_0} + \sum_i\alpha_i\Delta A_i,\]</p>
 					<p class="fragment theorem" align="left"> <strong>Theorem (CDC 2019)</strong> The predictor
 						\[
@@ -238,7 +232,7 @@
 					<!-- <aside id="references" class="references">[CDC 2019]</aside> -->
 				</section>
 				<section style="font-size: .7em">
-					<header><h3>Solution 2: stability</h3></header>
+					<header><h3>Novel predictor: stability</h3></header>
 					<p class="theorem" align="left"><strong>Theorem (CDC 2019)</strong>If there exist diagonal matrices $P$, $Q$, $Q_{+}$, $Q_{-}$, $Z_{+}$, $Z_{-}$, $\Psi_{+}$, $\Psi_{-}$, $\Psi$, $\Gamma\in\Real^{2n\times2n}$ such that
 						<span class="fragment">
 							\[
@@ -272,17 +266,17 @@
 					</p>
 				</section>
 				<section>
-					<header><h3>Solution 2: stability</h3></header>
-					<object data="images/robust/predictor.svg" type="image/svg+xml" width="75%" type="image/svg+xml"></object>
+					<header><h3>Novel predictor: stability</h3></header>
+					<img class="fragment" data-src="images/robust/predictor.svg" width="75%"></object>
 				</section>
 				<section>
 					<header><h3>Prediction for a car</h3></header>
 					<figure>
-						<img src="videos/interval/interval_direct.gif" width="50%">
+						<img data-src="videos/interval/interval_direct.gif" width="50%">
 						<figcaption>Simple predictor</figcaption>
 					</figure>
 					<figure>
-						<img src="videos/interval/interval_novel.gif" width="50%">
+						<img data-src="videos/interval/interval_novel.gif" width="50%">
 						<figcaption>Enhanced predictor</figcaption>
 					</figure>
 				</section>
@@ -434,8 +428,8 @@
 							</ul>
 						</div>
 						<div style="flex: 0.6;" class="r-stack" style="vertical-align: middle;">
-							<img class="fragment fade-in-then-out" data-fragment-index="1" width="300" src="images/robust/multi-model.svg">
-							<img class="fragment fade-in-then-out" data-fragment-index="2" width="300" src="images/robust/robust-control-tree.svg">
+							<img class="fragment fade-in-then-out" data-fragment-index="1" width="300" data-src="images/robust/multi-model.svg">
+							<img class="fragment fade-in-then-out" data-fragment-index="2" width="300" data-src="images/robust/robust-control-tree.svg">
 						</div>
 					</div>
 				</section>
@@ -457,7 +451,7 @@
 					<header><h3>Experiment: intersection (2/5)</h3></header>
 					<figure>
 						<video data-autoplay muted loop data-src="videos/robust/v_10_robust.mp4" type="video/mp4" width="50%"></video>
-						<figcaption>Anticipates potential threats</figcaption>
+						<figcaption>Another example</figcaption>
 					</figure>
 				</section>
 				<section>
@@ -538,6 +532,63 @@
 
 			<section>
 				<section id="model-free"><h3>Model-free</h3></section>
+				<section>
+					<header><h3>Q-learning</h3></header>
+					<p class="fragment">\[Q(s,a) = \max_\pi \displaystyle\expectedvalue_{\pi}\left[\sum_{t=0}^\infty \gamma^t R(s_t, a_t) \middle| \substack{s_0=s\\a_0=a}\right]\]</p>
+					<ul>
+						<li class="fragment">Fixed point of the <strong>Bellman operator</strong> $$\mathcal{T}:Q\rightarrow R + \gamma \expectedvalue_P [\max_a Q]$$ </li>
+						<li class="fragment">Fixed-point iteration <strong>guaranteed</strong> to converge, provided sufficient coverage</li>
+					</ul>
+				</section>
+				<section>
+					<header><h3>Function approximation</h3></header>
+					<p align="left" class="fragment">💡 Fit a parametrized model $Q_\theta$</p>
+					<h4 class="fragment">What is a <span class="green">good class of functions</span> for behavioural planning?</h4>
+					<p align="left" class="fragment">Requirements:
+						<ol>
+							<li class="fragment">Represent <strong>any number</strong> of vehicles</li>
+							<li class="fragment"><strong>Invariance</strong> to permutations</li>
+							<li class="fragment"><strong>Low-dimensional</strong> input</li>
+						</ol>
+					</p>
+				</section>
+				<section>
+					<header><h3>Neural Architectures</h3></header>
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th class="fragment" data-fragment-index="0" align="center">MLP</th>
+								<th class="fragment" data-fragment-index="1" align="center">CNN</th>
+								<th class="fragment" data-fragment-index="2" align="center">Social attention</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr >
+								<td>Variable input</td>
+								<td class="fragment" data-fragment-index="0" align="center">❌</td>
+								<td class="fragment" data-fragment-index="1" align="center">❌</td>
+								<td class="fragment" data-fragment-index="2" align="center">✔️</td>
+							</tr>
+							<tr>
+								<td>Order invariant</td>
+								<td class="fragment" data-fragment-index="0" align="center">❌</td>
+								<td class="fragment" data-fragment-index="1" align="center">✔️</td>
+								<td class="fragment" data-fragment-index="2" align="center">✔️</td>
+							</tr>
+							<tr>
+								<td>Low-dimensional</td>
+								<td class="fragment" data-fragment-index="0" align="center">✔️</td>
+								<td class="fragment" data-fragment-index="1" align="center">❌</td>
+								<td class="fragment" data-fragment-index="2" align="center">✔️</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<header><h3>Social Attention</h3></header>
+					<img data-src="images/social_attention/social_attention.svg" width="100%">
+				</section>
 			</section>
 
 		</div>
@@ -562,7 +613,7 @@
 		      TeX: { Macros: {
 		      	Real: "{\\mathbb{R}}",
 		      	cC: "{\\mathcal{C}}",
-		      	bE: "{\\mathbb{E}}",
+		      	expectedvalue: "\\mathop{\\mathbb{E}}",
 		      }}
 		  },
 			// Learn about plugins: https://revealjs.com/plugins/

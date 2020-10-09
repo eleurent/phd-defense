@@ -61,6 +61,10 @@
 	color: white;
 }
 
+.title h3 {
+	text-shadow: 0px 2px 3px #000;
+	-webkit-text-stroke: 2px black;
+}
 .title h4 {
 	text-shadow: 0px 2px 3px #000;
 	-webkit-text-stroke: 1px black;
@@ -87,53 +91,14 @@
 	font-size: 0.4em;
 }
 
-ul li {
+/*ul li {
 	margin: .8em 0em;
 	line-height: 1.2em;
 }
 
 ul.tight li, .definition li, li ul li {
 	margin: 0.1em;
-}
-
-ol.agenda {
-	list-style-type: upper-roman;
-}
-
-.note-container {
-	position: relative;
-}
-
-.bottom-container {
-	position: absolute;
-	bottom: -1em;
-	text-align: center;
-	width: 100%;
-}
-
-aside.note {
-	font-size: 12pt;
-	text-align: left;
-	background-color: #333;
-	box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
-	line-height: 1em;
-	padding: 1em;
-	margin-left: 2em;
-	vertical-align: center;
-	float: right;
-	width: 150px;
-}
-
-hr {
-	border: thin dotted #fff;
-}
-
-.bottom-container aside.note {
-	width: auto;
-	float: none;
-	margin: auto;
-	display: inline-block;
-}
+}*/
 
 
 /* Allow spans to grow and shrink, see https://github.com/hakimel/reveal.js/pull/2338/files */

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="605"
+   height="454"
+   overflow="hidden"
+   version="1.1"
+   id="svg49"
+   sodipodi:docname="tradeoff3.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata
+   id="metadata53">
+  <rdf:RDF>
+    <cc:Work
+       rdf:about="">
+      <dc:format>image/svg+xml</dc:format>
+      <dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      <dc:title></dc:title>
+    </cc:Work>
+  </rdf:RDF>
+</metadata>
+<sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1017"
+   id="namedview51"
+   showgrid="false"
+   inkscape:zoom="1.4702837"
+   inkscape:cx="107.894"
+   inkscape:cy="223.05185"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg49" />
+<defs
+   id="defs5">
+  <clipPath
+     id="clip0">
+    <rect
+       x="0"
+       y="0"
+       width="605"
+       height="454"
+       id="rect2" />
+  </clipPath>
+</defs>
+<path
+   style="fill:#ffffff;stroke-width:1.00027502"
+   inkscape:connector-curvature="0"
+   id="path27"
+   d="m 210.82099,205.34734 48.74901,-43.13067 -2.6512,-2.99985 -48.74897,43.13071 z M 207.01773,198.02145 202,210.479 l 12.9712,-3.45816 z m 53.70437,-31.4787 5.0177,-12.45755 -12.9712,3.4581 z" />
+<text
+   style="font-weight:400;font-size:24.00659943px;font-family:'Cambria Math', 'Cambria Math_MSFontService', sans-serif;fill:#ffffff;stroke-width:1.00027502"
+   id="text31"
+   transform="scale(0.99972511,1.000275)"
+   font-size="24"
+   font-weight="400"
+   x="208.76239"
+   y="176.95134">𝜋<tspan
+   style="font-size:18.00494957px;stroke-width:1.00027502"
+   id="tspan29"
+   y="167.95383"
+   x="224.27515"
+   font-size="18">⋆</tspan>
+</text>
+   /&gt;
+</svg>

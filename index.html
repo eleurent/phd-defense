@@ -20,7 +20,7 @@
 	<div class="reveal">
 		<div class="slides">
 			<section class="title" data-background-video="videos/traffic_blur.mp4" data-background-video-loop data-background-video-muted data-background-video-playbackRate=2>
-				<h3><span>Safe</span> and <span>Efficient</span> <br>Reinforcement Learning<br>for Behavioural Planning <br>in Autonomous Driving</h3>
+				<h4><span>Safe</span> and <span>Efficient</span> <br>Reinforcement Learning<br>for Behavioural Planning <br>in Autonomous Driving</h4>
 				<p class="authors">
 					<medium><a href="http://edouardleurent.com">Edouard Leurent</a></medium>
 				</p>
@@ -83,16 +83,16 @@
 				<section>
 					<header><h3>Outline</h3></header>
 					<ol>
-						<li class="fragment"><a href="#/model-based">Model-based</a>
+						<li class="fragment">Model-based
 							<ul>
-								<li class="fragment" style="color:grey"><a href="#/planning">Tree-based planning [ECML 2019, ACML 2020]</span></a></li>
-								<li class="fragment"><a href="#/robust-rl">Robust RL [CDC 2019, CDC 2020, NeurIPS 2020]</a></li>
+								<li class="fragment"><a href="#/planning" style="color:grey">Planning Fast by Hoping for the Best</a></li>
+								<li class="fragment"><a href="#/preparing-worst">Preparing for the Worst</a></li>
 							</ul>
 						</li>
-						<li class="fragment"><a href="#/model-free">Model-free</a>
+						<li class="fragment">Model-free
 							<ul>
-								<li class="fragment"><a href="#/social-attention">Social attention</a></li>
-								<li class="fragment"><a href="#/budgeted-rl">Budgeted RL [NeurIPS 2019]</a></li>
+								<li class="fragment"><a href="#/social-interactions">Considering Social Interactions</a></li>
+								<li class="fragment"><a href="#/acting-constraints">Acting under Adjustable Constraints</a></li>
 							</ul>
 						</li>
 					</ol>
@@ -101,7 +101,16 @@
 
 
 			<section>
-				<section id="model-based"><h3>Model-based</h3></section>
+				<section id="planning">
+					<h3 style="color:grey">Planning fast</h3>
+					<h4 style="color:grey">by hoping for the best</h4>
+				</section>
+			</section>
+
+			<section>
+				<section id="preparing-worst">
+					<h3>Preparing<br>for the worst</h4>
+				</section>
 				<section>
 					<header><h3>Constrained optimization</h3></header>
 					<video data-autoplay muted loop data-src="videos/robust/oracle.mp4" type="video/mp4"></video>
@@ -150,6 +159,7 @@
 					<header><h3>Linear Quadratic Systems</h3></header>
 					<div class="container">
 						<div class="col">
+							<br>
 							<p>
 								<span class="fragment">$f(x, u) = Ax + Bu$</span>
 								<span class="fragment">$R(x, u) = -x^\top Qx - u^\top R u$</span>
@@ -528,10 +538,25 @@
 					<header><h3>Limitation of the robust approach</h3></header>
 					<img class="flip-vertically" data-src="videos/robust/stuck.gif" width="100%">
 				</section>
+				<section>
+					<header><h3>Contradictory objectives</h3></header>
+					<div class="r-stack">
+					<img data-src="images/budgeted/tradeoff0.svg">
+					<img class="fragment" data-src="images/budgeted/tradeoff1.svg">
+					<img class="fragment" data-src="images/budgeted/tradeoff2.svg">
+					<img class="fragment" data-src="images/budgeted/tradeoff3.svg">
+					</div>
+				</section>
 			</section>
 
+
+
+
+
 			<section>
-				<section id="model-free"><h3>Model-free</h3></section>
+				<section id="social-interactions">
+					<h3>Considering<br>Social Interactions</h4>
+				</section>
 				<section>
 					<header><h3>Q-learning</h3></header>
 					<p class="fragment">\[Q(s,a) = \max_\pi \displaystyle\expectedvalue_{\pi}\left[\sum_{t=0}^\infty \gamma^t R(s_t, a_t) \middle| \substack{s_0=s\\a_0=a}\right]\]</p>
@@ -590,7 +615,11 @@
 					<img data-src="images/social_attention/social_attention.svg" width="100%">
 				</section>
 			</section>
-
+			<section>
+				<section id="acting-constraints">
+					<h3>Acting under<br>Adjustable Constraints</h4>
+				</section>
+			</section>
 		</div>
 	</div>
 

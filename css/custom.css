@@ -138,3 +138,13 @@ ul.tight li, .definition li, li ul li {
 	-webkit-transform: scaleY(-1);
 	transform: scaleY(-1);
 }
+
+
+.reveal .slides section .fragment.barred {
+	opacity: 1;
+	visibility: inherit;
+	transition-duration: 0s !important;
+}
+.reveal .slides section .fragment.barred.visible {
+	color:grey;
+}

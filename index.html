@@ -51,11 +51,11 @@
 				</section>
 				<section>
 					<header><h3>Failure modes</h3></header>
-					<video data-autoplay muted loop controls data-src="videos/waymo.mp4" type="video/mp4"></video>
+					<video data-autoplay muted loop data-src="videos/waymo.mp4" type="video/mp4"></video>
 				</section>
 				<section>
 					<header><h3>Failure modes</h3></header>
-					<video data-autoplay muted loop controls data-src="videos/navya_small.mp4" type="video/mp4"></video>
+					<video data-autoplay muted loop data-src="videos/navya_small.mp4" type="video/mp4"></video>
 				</section>
 				<section>
 					<header><h3>Research questions</h3></header>
@@ -82,34 +82,35 @@
 				</section>
 				<section>
 					<header><h3>Outline</h3></header>
-					<ol>
+					<ul>
 						<li class="fragment">Model-based
-							<ul>
-								<li class="fragment"><a href="#/planning" style="color:grey">Planning Fast by Hoping for the Best</a></li>
+							<ol>
+								<li class="fragment fade-in-then-semi-out"><a href="#/planning">Planning Fast by Hoping for the Best</a></li>
 								<li class="fragment"><a href="#/preparing-worst">Preparing for the Worst</a></li>
-							</ul>
+							</ol>
 						</li>
 						<li class="fragment">Model-free
-							<ul>
+							<ol>
 								<li class="fragment"><a href="#/social-interactions">Considering Social Interactions</a></li>
 								<li class="fragment"><a href="#/acting-constraints">Acting under Adjustable Constraints</a></li>
-							</ul>
+							</ol>
 						</li>
-					</ol>
+					</ul>
 				</section>
 			</section>
 
 
 			<section>
 				<section id="planning">
-					<h3 style="color:grey">Planning fast</h3>
-					<h4 style="color:grey">by hoping for the best</h4>
+					<h2 style="color:grey">Model-based</h2><br>
+					<h4><ol><li style="color:grey">Planning fast</li></ol></h4>
 				</section>
 			</section>
 
 			<section>
 				<section id="preparing-worst">
-					<h3>Preparing<br>for the worst</h4>
+					<h2>Model-based</h2><br>
+					<h4><ol start="2"><li>Preparing for the Worst</li></ol></h4>
 				</section>
 				<section>
 					<header><h3>Constrained optimization</h3></header>
@@ -225,7 +226,7 @@
 						\small \color{orange}{\theta\in[1, 2]}\\
 						\small\omega(t) \in [-0.05, 0.05]
 					\end{array}\right.$</p>
-					<img class="fragment" data-src="images/robust/observer.svg" width="70%"></object>
+					<img class="fragment" data-src="images/robust/observer_dark.svg" width="70%"></object>
 				</section>
 				<section style="font-size: .7em">
 					<header><h3>Novel predictor: polytopic structure</h3></header>
@@ -277,17 +278,24 @@
 				</section>
 				<section>
 					<header><h3>Novel predictor: stability</h3></header>
-					<img class="fragment" data-src="images/robust/predictor.svg" width="75%"></object>
+					<img class="fragment" data-src="images/robust/predictor_dark.svg" width="75%"></object>
 				</section>
 				<section>
 					<header><h3>Prediction for a car</h3></header>
 					<figure>
-						<img data-src="videos/interval/interval_direct.gif" width="50%">
+						<img data-src="videos/interval/interval_direct.gif" width="60%">
 						<figcaption>Simple predictor</figcaption>
 					</figure>
 					<figure>
-						<img data-src="videos/interval/interval_novel.gif" width="50%">
+						<img data-src="videos/interval/interval_novel.gif" width="60%">
 						<figcaption>Enhanced predictor</figcaption>
+					</figure>
+				</section>
+				<section>
+					<header><h3>Scalability</h3></header>
+					<figure>
+						<img data-src="videos/interval/traffic.gif" width="100%">
+						<figcaption>Complexity <span class="fragment barred" data-fragment-index="0">$\mathcal{O}(H\color{crimson}{p^2})$</span><span style="display:inline-block;" class="fragment fade-left" data-fragment-index="0">$\rightarrow\mathcal{O}(H\color{limegreen}{p})$</span></figcaption>
 					</figure>
 				</section>
 				<section>
@@ -377,10 +385,6 @@
 						<figcaption>Robust planning with $\color{crimson}{\cC_{N,\delta}}$</figcaption>
 					</figure>
 				</section>
-				<!-- <section data-background-video="videos/robust/1_robust.mp4" data-background-video-loop data-background-video-muted>
-					<p><br><br><br><br><br><br><br><br><br><br></p>
-					<h3 style="color:black; -webkit-text-stroke-width: 1px;-webkit-text-stroke-color: white;">Robust planning with $\color{crimson}{\cC_{N,\delta}}$</h3>
-				</section> -->
 				<section>
 					<header><h3>Results</h3></header>
 					<table>
@@ -555,7 +559,8 @@
 
 			<section>
 				<section id="social-interactions">
-					<h3>Considering<br>Social Interactions</h4>
+					<h2>Model-free</h2><br>
+					<h4><ol><li>Considering Social Interactions</li></ol></h4>
 				</section>
 				<section>
 					<header><h3>Q-learning</h3></header>
@@ -614,10 +619,62 @@
 					<header><h3>Social Attention</h3></header>
 					<img data-src="images/social_attention/social_attention.svg" width="100%">
 				</section>
+				<section>
+					<header><h3>Results</h3></header>
+					<img data-src="images/social_attention/total_reward.svg" height="100%">
+				</section>
+				<section>
+					<header><h3>Visualization of attention scores</h3></header>
+					<video data-autoplay muted loop controls data-src="videos/attention/1_episode.mp4" type="video/mp4"></video>
+				</section>
+				<section>
+					<header><h3>Sensitivity to distance</h3></header>
+					<video data-autoplay muted loop controls data-src="videos/attention/2_distance.mp4" type="video/mp4"></video>
+				</section>
+				<section>
+					<header><h3>Sensitivity to uncertainty</h3></header>
+					<video data-autoplay muted loop controls data-src="videos/attention/3_sensitivity.mp4" type="video/mp4"></video>
+				</section>
 			</section>
+
+
+
+
+
 			<section>
 				<section id="acting-constraints">
-					<h3>Acting under<br>Adjustable Constraints</h4>
+					<h2>Model-free</h2><br>
+					<h4><ol start="2"><li>Acting under Adjustable Constraints</li></ol></h4>
+				</section>
+				<section>
+					<header><h3><span  style="display: inline-block;" class="fragment fade-down" data-fragment-index="0">Budgeted</span> Markov Decision Process</h3></header>
+					<ul>
+						<li style="display: inline-block; margin: 10px;">Dynamics $P$,</li>
+						<li style="display: inline-block; margin: 10px;" class="green">Rewards $R$,</li>
+						<li style="display: inline-block; margin: 10px;" class="fragment fade-left red" data-fragment-index="1">Costs $C$,</li>
+						<li style="display: inline-block; margin: 10px;" class="fragment fade-left blue" data-fragment-index="2">Budget $\beta$,</li>
+					</ul>
+					<p>Objective</p>
+					<p><div class="r-stack">
+						<span class="fragment fade-out" data-fragment-index="4">$\max_\pi \,\expectedvalue_\pi\,\color{limegreen}{\sum_t\gamma^t R_t}$</span>
+						<span class="fragment" data-fragment-index="4">$\max_\pi \,\color{limegreen}{V_r^\pi}(s,\color{lightskyblue}{\beta})$</span>
+					</div></p>
+					<p class="fragment fade-up" data-fragment-index="3" style="position:relative;">
+						<span class="fragment fade-out" data-fragment-index="5" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;">$\text{subject to }\,\expectedvalue_\pi\,\color{crimson}{\sum_t\gamma^t C_t} \leq \color{lightskyblue}{\beta}$</span>
+						<span class="fragment" data-fragment-index="5" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;">$\text{subject to }\,\color{crimson}{V_c^\pi}(s,\color{lightskyblue}{\beta})\leq \color{lightskyblue}{\beta}$</span>
+					</p>
+				</section>
+				<section>
+					<header><h3>Budgeted policies</h3></header>
+					<p>$\overline{Q}^\pi(s, a, $<span class="fragment">$\color{lightskyblue}{\underbrace{\beta}_{\substack{\text{risk}\\\text{budget}}}}$</span>$) = ($<span class="fragment">$\color{limegreen}{\underbrace{Q_r^\pi}_{\substack{\text{expected}\\\text{reward}}}}$</span>$,$<span class="fragment">$\color{crimson}{\underbrace{Q_c^\pi}_{\substack{\text{expected}\\\text{cost}}}}$</span>$)$</p>
+					<img data-src="">
+				</section>
+				<section>
+					<header><h3>Budgeted Optimality</h3></header>
+					<p>$$
+					\begin{aligned}\overline{\pi}^\star \in &\;\;\color{limegreen}{\mathop{\text{arg}\max}_\pi}\; \color{limegreen}{V_r^\pi}(s,\color{lightskyblue}{\beta})\\
+					&\text{subject to } \color{crimson}{V_c^\pi}(s,\color{lightskyblue}{\beta})\leq \color{lightskyblue}{\beta}
+					\end{aligned}$$</p>
 				</section>
 			</section>
 		</div>

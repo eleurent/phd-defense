@@ -133,10 +133,10 @@
 				</section>
 				<section>
 					<header><h3>Confident regression</h3></header>
-					<p class="fragment" align="left"> Assume $\color{orange}{f_\theta}$ is <strong>linearly</strong> parametrized<br>
-					\[\small \color{orange}{f_\theta}(x, u) = \phi_0(x, u) + \sum_{i=1}^d \color{orange}{\theta_i}\phi_i(x, u)\in\Real^p\]</p>
-					<p class="fragment theorem" align="left"> <strong>Proposition</strong>(Confidence ellipsoid $\color{crimson}{\cC_{N,\delta}}$) <!-- <em>W.h.p.</em>, -->
-						\[\small \mathbb{P}\left[\|\color{orange}{\theta}-\color{crimson}{\theta_{N,\lambda}}\|_{G_{N,\lambda}} \leq \beta_N(\delta)\right]\geq 1-\delta\]
+					<p class="fragment" align="left"> Assume $\color{orange}{f_\theta}$ is <strong>linearly</strong> parametrized</p>
+					<p class="fragment">$\small \color{orange}{f_\theta}(x, u) = \phi_0(x, u) + \sum_{i=1}^d \color{orange}{\theta_i}\phi_i(x, u)\in\Real^p$</p>
+					<p class="fragment theorem" align="left"> <strong>Proposition</strong> (Confidence ellipsoid $\color{crimson}{\cC_{N,\delta}}$) <!-- <em>W.h.p.</em>, -->
+						\[\small \mathbb{P}\left[\|\color{orange}{\theta}-\color{crimson}{\theta_{N,\lambda}}\|_{\color{crimson}{G_{N,\lambda}}} \leq \color{crimson}{\beta_N(\delta)}\right]\geq 1-\delta\]
 						$
 						\scriptsize
 						\begin{aligned}
@@ -177,8 +177,8 @@
 				</section>
 				<section>
 					<header><h3>Obstacle avoidance tasks</h3></header>
-					<img data-src="images/robust/non-convex.svg" width="80%">
-					<p>Require <span class="red">non-convex, non-smooth</span> rewards</p>
+					<img data-src="images/robust/non-convex.svg" width="75%">
+					<li class="fragment fade-up imply">Handle <span class="red">non-convex</span>, <span class="red">non-smooth</span> rewards</p>
 				</section>
 				<section>
 					<header><h3>Tree-based planning</h3></header>
@@ -671,10 +671,6 @@
 				</section>
 				<section>
 					<header><h3>Budgeted Optimality</h3></header>
-					<p>$$
-					\begin{aligned}\overline{\pi}^\star \in &\;\;\color{limegreen}{\mathop{\text{arg}\max}_\pi}\; \color{limegreen}{V_r^\pi}(s,\color{lightskyblue}{\beta})\\
-					&\text{subject to } \color{crimson}{V_c^\pi}(s,\color{lightskyblue}{\beta})\leq \color{lightskyblue}{\beta}
-					\end{aligned}$$</p>
 				</section>
 			</section>
 		</div>

@@ -19,7 +19,7 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<section class="title" data-background-video="videos/traffic_blur.mp4" data-background-video-loop data-background-video-muted data-background-video-playbackRate=2>
+			<section class="title" data-background-video="videos/traffic_blur.mp4" data-background-video-loop data-background-video-muted>
 				<h4><span>Safe</span> and <span>Efficient</span> <br>Reinforcement Learning<br>for Behavioural Planning <br>in Autonomous Driving</h4>
 				<p class="authors">
 					<medium><a href="http://edouardleurent.com">Edouard Leurent</a></medium>
@@ -693,8 +693,8 @@
 				</section>
 				<section>
 					<header><h3>Budgeted policies</h3></header>
-					<img class="fragment" data-fragment-index="3" data-src="images/budgeted/architecture.svg" width=50%>
 					<p style="font-size: 70%">$\overline{Q}^\pi(s, a, $<span class="fragment" data-fragment-index="0">$\color{lightskyblue}{\underbrace{\beta}_{\substack{\text{risk}\\\text{budget}}}}$</span>$) = ($<span class="fragment" data-fragment-index="1">$\color{limegreen}{\underbrace{Q_r^\pi}_{\substack{\text{expected}\\\text{reward}}}}$</span>$,$<span class="fragment" data-fragment-index="2">$\color{crimson}{\underbrace{Q_c^\pi}_{\substack{\text{expected}\\\text{cost}}}}$</span>$)$</p>
+					<img class="fragment" data-fragment-index="3" data-src="images/budgeted/architecture.svg" width=50%>
 				</section>
 				<section style="font-size: 70%">
 					<header><h3>Budgeted Optimality</h3></header>
@@ -708,14 +708,91 @@
 						& \text{ s.t. }  \expectedvalue_{\overline{a}\sim\rho} \color{crimson}{Q_c(\overline{s}, \overline{a})} \color{lightskyblue}{\leq \beta}
 						\end{aligned}
 						\]</span>
+					</p>
 				</section>
 				<section>
-					<header><h3>Budgeted Value Iteration</h3></header>
-					<p>How to compute $\overline{Q}^\star$?</p>
+					<header><h3>The optimal policy</h3></header>
+					<div class="theorem"><p align="left"><strong>Proposition</strong></p>
+						<ul>
+							<li class="fragment">$\color{orange}{\pi_\text{g}(\cdot\,; \overline{Q}^\star)}$ is optimal.</li>
+							<li class="fragment">$\color{orange}{\pi_\text{g}(\cdot\,; \overline{Q})}$ can be computed <strong>efficiently</strong> as a mixture $\color{limegreen}{\pi_{\text{hull}}}$ of two points on the <span class="green">convex hull</span> of $\overline{Q}$.</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<header><h3>How to compute $\overline{Q}^\star$?</h3></header>
 					<ul>
-						<li class="fragment check">We have $\color{lightskyblue}{\overline{Q}^\star} = \mathcal{T}\color{lightskyblue}{\overline{Q}^\star}$</li>
-						<li class="fragment idea">Apply $Q_{k+1}\gets\mathcal{T}Q_k$</li>
+						<li class="fragment check" data-fragment-index="0">We have $\color{lightskyblue}{\overline{Q}^\star} = \mathcal{T}\color{lightskyblue}{\overline{Q}^\star}$</li>
+						<li class="fragment idea" data-fragment-index="1">Apply $Q_{k+1}\gets\mathcal{T}Q_k$</li>
+						<li class="fragment cross" data-fragment-index="3">We <span class="red">cannot guarantee</span> convergence of $Q_k$</li>
 					</ul>
+					<br>
+					<br>
+					<p align="left" class="theorem fragment" data-fragment-index="2"><strong>Theorem</strong> For Zny BMDP $(\mathcal{S},\mathcal{A},R,C,\gamma)$ with $|\mathcal{A}|\geq 2$, $\mathcal{T}$ is <span class="red" style="font-weight: bold">not</span> a contraction.</p>
+				</section>
+				<section style="font-size: 90%">
+					<header><h3>How to compute $\overline{Q}^\star$?</h3></header>
+					<p align="left" class="theorem fragment"><strong>Theorem</strong> $\mathcal{T}$ is <span class="green">a contraction</span> on the subset
+						\[\{\overline{Q}: ``\color{limegreen}{Q_r} \text{ is L-Lipschitz with respect to } \color{crimson}{Q_c}"\}\]
+					with $L<1/\gamma - 1$.
+					</p>
+					<ul>
+						<li class="fragment check">We <span class="green">guarantee</span> convergence under (strong) assumptions</li>
+						<li class="fragment check">We <span class="green">observe</span> empirical convergence</li>
+					</ul>
+				</section>
+				<section>
+					<header><h3>Results</h3></header>
+					<img data-src="images/budgeted/highway.svg" width="80%">
+				</section>
+				<section>
+					<header><h3>Two-way road</h3></header>
+					<figure class="fragment fade-down" data-fragment-index="0">
+					<img data-src="videos/budgeted/highway-safe.gif" width="55%" style="margin-bottom: 0px">
+					<figcaption style="font-size: 50%">$\color{limegreen}{\beta=0}$</figcaption>
+					</figure>
+					<figure class="fragment fade-left" data-fragment-index="2">
+					<img data-src="videos/budgeted/highway-neutral.gif" width="55%" style="margin-bottom: 0px">
+					<figcaption style="font-size: 50%">$\color{lightskyblue}{\beta=0.2}$</figcaption>
+					</figure>
+					<figure class="fragment fade-up" data-fragment-index="1">
+					<img data-src="videos/budgeted/highway-risky.gif" width="55%" style="margin-bottom: 0px">
+					<figcaption style="font-size: 50%">$\color{crimson}{\beta=1}$</figcaption>
+					</figure>
+				</section>
+			</section>
+
+
+
+
+			<section>
+				<section>
+					<header><h3>Conclusion</h3></header>
+				</section>
+				<section style="font-size:68%">
+					<header><h3><span class="fragment fade-down" style="display: inline-block;"><span class="green">Safe Decision-making</span></span> <span class="fragment fade-down" style="display: inline-block;">among <span class="blue">interacting drivers</span></span> <span class="fragment fade-down" style="display: inline-block;">with <span class="red">behavioural uncertainty</span></span></h3></header>
+					<br>
+					<ol>
+						<li class="fragment">Model-based
+							<ul>
+								<li class="fragment">Build a <span class="red">confidence region</span> around the true model</li>
+								<li class="fragment">Propagate a stable <span class="green">interval predictor</span></li>
+								<li class="fragment">Optimise with a <span class="green">pessimistic surrogate</span></li>
+								<li class="fragment">Test the <span class="blue">adequacy</span> of multiple models</li>
+							</ul>
+						</li>
+						<br>
+						<li class="fragment">Model-free
+							<ul>
+								<li class="fragment">Use <span class="blue">self-attention</span> for social interactions</li>
+								<li class="fragment">Constrain the <span class="red">expected risk</span> below a <span class="green">budget</span></li>
+							</ul>
+						</li>
+					</ol>
+				</section>
+				<section class="title" data-background-video="videos/traffic_blur.mp4" data-background-video-loop data-background-video-muted>
+					<h2>Thank you</h2>
+				</section>
 			</section>
 		</div>
 	</div>

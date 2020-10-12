@@ -44,17 +44,21 @@
  				<section>
 					<header><h3>Motivation</h3></header>
 					<div class="r-stack">
-					<figure class="fragment fade-out" data-fragment-index="1">
+					<figure class="fragment fade-in-then-out" data-fragment-index="0">
 						<img data-src="images/introduction/tcr.jpg" width="100%">
-						<figcaption>Renault ADAS Department</figcaption>
+						<figcaption>Renault ADAS Department, Guyancourt</figcaption>
 					</figure>
 					<figure class="fragment fade-in-then-out" data-fragment-index="1">
-						<video data-autoplay muted loop data-src="videos/introduction/aeb.mp4" type="video/mp4"></video>
-						<figcaption>Automatic Emergency Braking</figcaption>
+						<video data-autoplay muted loop data-src="videos/introduction/acc.mp4" type="video/mp4"></video>
+						<figcaption>Adaptive Cruise Control (ACC)</figcaption>
 					</figure>
 					<figure class="fragment fade-in-then-out" data-fragment-index="2">
+						<video data-autoplay muted loop data-src="videos/introduction/aeb.mp4" type="video/mp4"></video>
+						<figcaption>Automatic Emergency Braking (AEB)</figcaption>
+					</figure>
+					<figure class="fragment fade-in-then-out" data-fragment-index="3">
 						<video data-autoplay muted loop data-src="videos/introduction/lka.mp4" type="video/mp4"></video>
-						<figcaption>Lane Keeping Assist</figcaption>
+						<figcaption>Lane Keeping Assist (LKA)</figcaption>
 					</figure>
 				</div>
 				</section>
@@ -80,8 +84,8 @@
 				</section>
 				<section>
 					<header><h3>Benchmark: the <a href="http://github.com/eleurent/highway-env">highway-env</a> lib</h3></header>
-					<div class="container">
-
+						<a class="github-button" href="https://github.com/eleurent/highway-env" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-show-count="true" aria-label="Star eleurent/highway-env on GitHub">Star</a>
+						<a class="github-button" href="https://github.com/eleurent/highway-env/fork" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork eleurent/highway-env on GitHub">Fork</a>						<div class="container">
 						<div class="col">
 							<img data-src="videos/highway-env/highway.gif" width="100%">
 							<img data-src="videos/highway-env/roundabout-env.gif" width="80%">
@@ -125,6 +129,14 @@
 				<section id="preparing-worst">
 					<h2>Model-based</h2><br>
 					<h4><ol start="2"><li>Preparing for the Worst</li></ol></h4>
+				</section>
+				<section>
+					<header><h3>Principle</h3></header>
+					<p>$$\dot{x}(t) = \color{lightskyblue}{f}\left(x(t), u(t)\right) + \omega(t)$$</p>
+					<ol>
+						<li class="fragment">Learn a model of the dynamics $$\min_{\color{orange}{\theta}} \mathcal{L}(\color{orange}{f_{\theta}}, \color{lightskyblue}{f})$$</li>
+						<li class="fragment">Use it to plan $$\max_{\color{limegreen}{\pi}} \expectedvalue\left[ \sum_{t}\gamma^t R(x(t))\middle| \color{orange}{f_{\theta}}, \color{limegreen}{\pi} \right]$$</li>
+					</ol>
 				</section>
 				<section>
 					<header><h3>Constrained optimization</h3></header>
@@ -192,7 +204,7 @@
 				<section>
 					<header><h3>Obstacle avoidance tasks</h3></header>
 					<img data-src="images/robust/non-convex.svg" width="75%">
-					<li class="fragment fade-up imply">Handle <span class="red">non-convex</span>, <span class="red">non-smooth</span> rewards</p>
+					<li class="fragment fade-up warning">Handle <span class="red">non-convex</span>, <span class="red">non-smooth</span> rewards</p>
 				</section>
 				<section>
 					<header><h3>Tree-based planning</h3></header>
@@ -208,7 +220,7 @@
 				</section>
 				<section>
 					<header><h3>Interval Prediction</h3></header>
-					<p align="left">Given $\theta\in\cC_{N,\delta}$, find \[\color{lightskyblue}{\underline x(t)} \leq x(t) \leq \color{lightskyblue}{\overline x(t)}\]</p>
+					<p align="left">Given the confidence region $\color{crimson}{\theta\in\cC_{N,\delta}}$, find \[\color{lightskyblue}{\underline x(t)} \leq x(t) \leq \color{lightskyblue}{\overline x(t)}\]</p>
 					<p align="left" class="fragment"> <strong>Assumption</strong>: $f$ depends linearly on $x$
 						\[
 						\scriptsize
@@ -243,7 +255,7 @@
 					<img class="fragment" data-src="images/robust/observer_dark.svg" width="70%"></object>
 				</section>
 				<section style="font-size: .7em">
-					<header><h3>Novel predictor: polytopic structure</h3></header>
+					<header><h3>Novel predictor</h3></header>
 					<p align="left">Under polytopic uncertainty around <span class="red">$A_0$ Metzler</span> \[A(\theta) = \color{crimson}{A_0} + \sum_i\alpha_i\Delta A_i,\]</p>
 					<p class="fragment theorem" align="left"> <strong>Theorem (CDC 2019)</strong> The predictor
 						\[
@@ -258,6 +270,16 @@
 				</section>
 				<section style="font-size: .7em">
 					<header><h3>Novel predictor: stability</h3></header>
+					Let $\mathcal{A}=\left[\begin{array}{cc}
+							A_{0} & 0\\
+							0 & A_{0}
+							\end{array}\right],\;R_{+}=\left[\begin{array}{cc}
+							0 & -\Delta A_{-}\\
+							0 & \Delta A_{+}
+							\end{array}\right],\;R_{-}=\left[\begin{array}{cc}
+							\Delta A_{+} & 0\\
+							-\Delta A_{-} & 0
+							\end{array}\right]$
 					<p class="theorem" align="left"><strong>Theorem (CDC 2019)</strong>If there exist diagonal matrices $P$, $Q$, $Q_{+}$, $Q_{-}$, $Z_{+}$, $Z_{-}$, $\Psi_{+}$, $\Psi_{-}$, $\Psi$, $\Gamma\in\Real^{2n\times2n}$ such that
 						<span class="fragment">
 							\[
@@ -270,19 +292,9 @@
 						<span class="fragment">
 							where
 							\[
-							\Upsilon_{11}=\mathcal{A}^{\top}P+P\mathcal{A}+Q,\;\Upsilon_{12}=\mathcal{A}^{\top}Z_{+}+PR_{+}+\Psi_{+},\\
-							\Upsilon_{13}=\mathcal{A}^{\top}Z_{-}+PR_{-}+\Psi_{-},\;\Upsilon_{22}=Z_{+}R_{+}+R_{+}^{\top}Z_{+}+Q_{+},\\
-							\Upsilon_{23}=Z_{+}R_{-}+R_{+}^{\top}Z_{-}+\Psi,\;\Upsilon_{33}=Z_{-}R_{-}+R_{-}^{\top}Z_{-}+Q_{-},\\
-							\mathcal{A}=\left[\begin{array}{cc}
-							A_{0} & 0\\
-							0 & A_{0}
-							\end{array}\right],\;R_{+}=\left[\begin{array}{cc}
-							0 & -\Delta A_{-}\\
-							0 & \Delta A_{+}
-							\end{array}\right],\;R_{-}=\left[\begin{array}{cc}
-							\Delta A_{+} & 0\\
-							-\Delta A_{-} & 0
-							\end{array}\right]
+							\color{lightskyblue}{\Upsilon_{11}}=\mathcal{A}^{\top}P+P\mathcal{A}+Q,\;\color{lightskyblue}{\Upsilon_{12}}=\mathcal{A}^{\top}Z_{+}+PR_{+}+\Psi_{+},\\
+							\color{lightskyblue}{\Upsilon_{13}}=\mathcal{A}^{\top}Z_{-}+PR_{-}+\Psi_{-},\;\color{lightskyblue}{\Upsilon_{22}}=Z_{+}R_{+}+R_{+}^{\top}Z_{+}+Q_{+},\\
+							\color{lightskyblue}{\Upsilon_{23}}=Z_{+}R_{-}+R_{+}^{\top}Z_{-}+\Psi,\;\color{lightskyblue}{\Upsilon_{33}}=Z_{-}R_{-}+R_{-}^{\top}Z_{-}+Q_{-}
 							\]
 						</span>
 						<span class="fragment">
@@ -441,7 +453,7 @@
 				<section>
 					<header><h3>What if our assumptions are wrong?</h3></header>
 					<p class="fragment">$$\dot{{x}}(t) = \left(\color{magenta}{A_0} + \sum_{i=1}^d{\theta_i}\color{magenta}{\phi_i}\right)x(t) + Bu(t) + D\omega(t)$$</p>
-					<p class="fragment" style="text-align: justify;">With our <strong>statistical tools</strong>, we can test the <strong>adequacy</strong> <span class="fragment">of the model $\color{magenta}{(A_0,\phi)}$</span> <span class="fragment">with the observed data $x(t_0)$, $x(t_1),\dots$.</span>
+					<p class="fragment">Our <strong>statistical framework</strong> can test the <strong>adequacy</strong> <span class="fragment">of the model $\color{magenta}{(A_0,\phi)}$</span> <span class="fragment">with observations $x(t_0)$, $x(t_1),\dots$</span>
 					</p>
 				</section>
 				<section style="font-size: 90%;">
@@ -681,12 +693,29 @@
 				</section>
 				<section>
 					<header><h3>Budgeted policies</h3></header>
-					<p>$\overline{Q}^\pi(s, a, $<span class="fragment">$\color{lightskyblue}{\underbrace{\beta}_{\substack{\text{risk}\\\text{budget}}}}$</span>$) = ($<span class="fragment">$\color{limegreen}{\underbrace{Q_r^\pi}_{\substack{\text{expected}\\\text{reward}}}}$</span>$,$<span class="fragment">$\color{crimson}{\underbrace{Q_c^\pi}_{\substack{\text{expected}\\\text{cost}}}}$</span>$)$</p>
-					<img data-src="">
+					<img class="fragment" data-fragment-index="3" data-src="images/budgeted/architecture.svg" width=50%>
+					<p style="font-size: 70%">$\overline{Q}^\pi(s, a, $<span class="fragment" data-fragment-index="0">$\color{lightskyblue}{\underbrace{\beta}_{\substack{\text{risk}\\\text{budget}}}}$</span>$) = ($<span class="fragment" data-fragment-index="1">$\color{limegreen}{\underbrace{Q_r^\pi}_{\substack{\text{expected}\\\text{reward}}}}$</span>$,$<span class="fragment" data-fragment-index="2">$\color{crimson}{\underbrace{Q_c^\pi}_{\substack{\text{expected}\\\text{cost}}}}$</span>$)$</p>
+				</section>
+				<section style="font-size: 70%">
+					<header><h3>Budgeted Optimality</h3></header>
+					<p class="theorem" align="left"><strong>Theorem</strong> (NeurIPS 2019) The optimal state-action value function verifies
+						\[\color{lightskyblue}{\overline{Q}^\star}(\overline{s},\overline{a}) = \underbrace{\overline{R}(\overline{s}, \overline{a}) + \gamma \sum_{\overline{s}\in\overline{\mathcal{S}}}\overline{P}\left(\overline{s}'\middle| \overline{s},\overline{a}\right) \sum_{\overline{a}\in\overline{\mathcal{A}}} \color{orange}{\pi_{\text{g}}\left(\overline{a}'\middle| \overline{s}';\;\color{lightskyblue}{\overline{Q}^\star}\right)}\color{lightskyblue}{\overline{Q}^\star}(\overline{s}',\overline{a}')}_{\mathcal{T}\color{lightskyblue}{\overline{Q}^\star}(\overline{s},\overline{a})} \]
+						<span class="fragment">where the greedy policy $\color{orange}{\pi_\text{g}}$ is</span>
+						<span class="fragment">\[
+						\begin{aligned}
+						\color{orange}{\pi_\text{g}(\overline{a}|\overline{s}; Q)} \in &\mathop{\text{arg}\min}_{\rho\in\Pi_r^Q} \expectedvalue_{\overline{a}\sim\rho}Q_c(\overline{s}, \overline{a}), \\
+							\text{and }\quad \Pi_r^Q = &\mathop{\color{limegreen}{\text{arg}\max}}_{\rho\in\mathcal{M}(\overline{\mathcal{A}})} \expectedvalue_{\overline{a}\sim\rho} \color{limegreen}{Q_r(\overline{s}, \overline{a})} \\
+						& \text{ s.t. }  \expectedvalue_{\overline{a}\sim\rho} \color{crimson}{Q_c(\overline{s}, \overline{a})} \color{lightskyblue}{\leq \beta}
+						\end{aligned}
+						\]</span>
 				</section>
 				<section>
-					<header><h3>Budgeted Optimality</h3></header>
-				</section>
+					<header><h3>Budgeted Value Iteration</h3></header>
+					<p>How to compute $\overline{Q}^\star$?</p>
+					<ul>
+						<li class="fragment check">We have $\color{lightskyblue}{\overline{Q}^\star} = \mathcal{T}\color{lightskyblue}{\overline{Q}^\star}$</li>
+						<li class="fragment idea">Apply $Q_{k+1}\gets\mathcal{T}Q_k$</li>
+					</ul>
 			</section>
 		</div>
 	</div>
@@ -697,6 +726,7 @@
 	<script src="plugin/highlight/highlight.js"></script>
 	<script src="plugin/math/math.js"></script>
 	<script src="plugin/zoom/zoom.js"></script>
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<script>
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/

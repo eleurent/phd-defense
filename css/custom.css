@@ -59,6 +59,15 @@ li.imply {
   padding-inline-start: 1ch;
 }
 
+li.warning {
+  list-style-type: '⚠️';
+  padding-inline-start: 1ch;
+}
+
+li.idea {
+  list-style-type: '💡';
+  padding-inline-start: 1ch;
+}
 
 .reveal .references {
 	position: fixed;

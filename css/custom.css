@@ -1,12 +1,12 @@
 
 .reveal .green {
-	/*color: limegreen;*/
-	color: #69c242;
+	color: limegreen;
+	/*color: #69c242;*/
 }
 
 .reveal .blue {
-	/*color: lightskyblue;*/
-	color: #64bbe3;
+	color: lightskyblue;
+	/*color: #64bbe3;*/
 }
 
 .reveal .yellow {
@@ -14,17 +14,18 @@
 }
 
 .reveal .orange {
-	color: #ff7300;
+	color: orange;
+	/*color: #ff7300;*/
 }
 
 .reveal .red {
-	/*color: crimson;*/
-	color: #cf2030;
+	color: crimson;
+	/*color: #cf2030;*/
 }
 
 .reveal b, .reveal strong {
-	/*color: lightskyblue;*/
-	color: #64bbe3;
+	color: lightskyblue;
+	/*color: #64bbe3;*/
 }
 
 /* Two-columns */
@@ -66,6 +67,11 @@ li.warning {
 
 li.idea {
   list-style-type: '💡';
+  padding-inline-start: 1ch;
+}
+
+li.hope {
+  list-style-type: '🤞';
   padding-inline-start: 1ch;
 }
 

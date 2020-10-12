@@ -139,7 +139,18 @@
 					</ol>
 				</section>
 				<section>
+					<header><h3>Limitation</h3></header>
+					<p><span class="red">Ignores</span> the model bias$$\color{orange}{f_{\theta}} \neq \color{lightskyblue}{f}$$</p>
+					<p>
+						<ul>
+							<li class="fragment hope">But it might get better as $\color{orange}{f_{\theta}} \to \color{lightskyblue}{f}$ ?</li>
+							<li class="fragment cross"><span class="red">No:</span> constrained optimization <img class="fragment" style="vertical-align:middle" data-src="images/robust/lp.svg"></li>
+						</ul>
+					</p>
+				</section>
+				<section>
 					<header><h3>Constrained optimization</h3></header>
+					<p>With $\mathcal{}
 					<video data-autoplay muted loop data-src="videos/robust/oracle.mp4" type="video/mp4"></video>
 				</section>
 				<section>
@@ -188,12 +199,12 @@
 						<div class="col">
 							<br>
 							<p>
-								<span class="fragment">$f(x, u) = Ax + Bu$</span>
-								<span class="fragment">$R(x, u) = -x^\top Qx - u^\top R u$</span>
+								<span class="fragment" data-fragment-index="0">$f(x, u) = Ax + Bu$</span>
+								<span class="fragment" data-fragment-index="1"><span class="fragment highlight-red" data-fragment-index="3">$R(x, u) = -x^\top Qx - u^\top R u$</span></span>
 							</p>
-							<p class="fragment"align="center">[Dean et al., 2019]<br>cast <span class="green">$\max$</span> <span class="red">$\min$</span> as an <span class="blue">SDP</span></p>
+							<p class="fragment" data-fragment-index="2" align="center">[Dean et al., 2019]<br>cast <span class="green">$\max$</span> <span class="red">$\min$</span> as an <span class="blue">SDP</span></p>
 						</div>
-						<div class="col fragment">
+						<div class="col fragment" data-fragment-index="3">
 							<figure>
 								<img data-src="images/robust/quadratic_w.png" width="55%">
 								<figcaption>❌<span class="red">stabilization</span> only</figcaption>
@@ -256,13 +267,13 @@
 				</section>
 				<section style="font-size: .7em">
 					<header><h3>Novel predictor</h3></header>
-					<p align="left">Under polytopic uncertainty around <span class="red">$A_0$ Metzler</span> \[A(\theta) = \color{crimson}{A_0} + \sum_i\alpha_i\Delta A_i,\]</p>
+					<p align="left">Under polytopic uncertainty around <span class="orange">$A_0$ Metzler</span> \[A(\theta) = \color{orange}{A_0} + \sum_i\alpha_i\color{crimson}{\Delta A_i},\]</p>
 					<p class="fragment theorem" align="left"> <strong>Theorem (CDC 2019)</strong> The predictor
 						\[
 						\scriptsize
 						\begin{aligned}
-						\dot{\underline{x}}(t) & = \color{crimson}{A_{0}}\underline{x}(t)-\Delta A_{+}\underline{x}^{-}(t)-\Delta A_{-}\overline{x}^{+}(t) +Bu(t)+D^{+}\underline{\omega}(t)-D^{-}\overline{\omega}(t),\\
-						\dot{\overline{x}}(t) & = \color{crimson}{A_{0}}\overline{x}(t)+\Delta A_{+}\overline{x}^{+}(t)+\Delta A_{-}\underline{x}^{-}(t) +Bu(t)+D^{+}\overline{\omega}(t)-D^{-}\underline{\omega}(t), \\
+						\dot{\underline{x}}(t) & = \color{orange}{A_{0}}\underline{x}(t)-\color{crimson}{\Delta A_{+}}\underline{x}^{-}(t)-\color{crimson}{\Delta A_{-}}\overline{x}^{+}(t) +Bu(t)+D^{+}\underline{\omega}(t)-D^{-}\overline{\omega}(t),\\
+						\dot{\overline{x}}(t) & = \color{orange}{A_{0}}\overline{x}(t)+\color{crimson}{\Delta A_{+}}\overline{x}^{+}(t)+\color{crimson}{\Delta A_{-}}\underline{x}^{-}(t) +Bu(t)+D^{+}\overline{\omega}(t)-D^{-}\underline{\omega}(t), \\
 						\end{aligned}
 						\]
 					ensures the inclusion property.</p>
@@ -271,14 +282,14 @@
 				<section style="font-size: .7em">
 					<header><h3>Novel predictor: stability</h3></header>
 					Let $\mathcal{A}=\left[\begin{array}{cc}
-							A_{0} & 0\\
-							0 & A_{0}
+							\color{orange}{A_{0}} & 0\\
+							0 & \color{orange}{A_{0}}
 							\end{array}\right],\;R_{+}=\left[\begin{array}{cc}
-							0 & -\Delta A_{-}\\
-							0 & \Delta A_{+}
+							0 & -\color{crimson}{\Delta A_{-}}\\
+							0 & \color{crimson}{\Delta A_{+}}
 							\end{array}\right],\;R_{-}=\left[\begin{array}{cc}
-							\Delta A_{+} & 0\\
-							-\Delta A_{-} & 0
+							\color{crimson}{\Delta A_{+}} & 0\\
+							-\color{crimson}{\Delta A_{-}} & 0
 							\end{array}\right]$
 					<p class="theorem" align="left"><strong>Theorem (CDC 2019)</strong>If there exist diagonal matrices $P$, $Q$, $Q_{+}$, $Q_{-}$, $Z_{+}$, $Z_{-}$, $\Psi_{+}$, $\Psi_{-}$, $\Psi$, $\Gamma\in\Real^{2n\times2n}$ such that
 						<span class="fragment">

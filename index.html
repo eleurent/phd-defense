@@ -169,19 +169,32 @@
 						</li>
 					</ol>
 				</section>
-				<section>
+				<section style="font-size: 80%">
 					<header><h3>Confident regression</h3></header>
-					<p class="fragment" align="left"> Assume $\color{orange}{f_\theta}$ is <strong>linearly</strong> parametrized</p>
-					<p class="fragment">$\small \color{orange}{f_\theta}(x, u) = \phi_0(x, u) + \sum_{i=1}^d \color{orange}{\theta_i}\phi_i(x, u)\in\Real^p$</p>
-					<p class="fragment theorem" align="left"> <strong>Proposition</strong> (Confidence ellipsoid $\color{crimson}{\cC_{N,\delta}}$) <!-- <em>W.h.p.</em>, -->
-						\[\small \mathbb{P}\left[\|\color{orange}{\theta}-\color{crimson}{\theta_{N,\lambda}}\|_{\color{crimson}{G_{N,\lambda}}} \leq \color{crimson}{\beta_N(\delta)}\right]\geq 1-\delta\]
-						$
-						\scriptsize
-						\begin{aligned}
-						\theta_{N,\lambda} & = G_{N, \lambda}^{-1} \sum_{n=1}^N \Phi_n^\top \Sigma_p^{-1} y_n, & G_{N, \lambda} &= \sum_{n=1}^N \Phi_{n}^\top\Sigma_p^{-1}\Phi_{n}  + \lambda I_d
-						\end{aligned}
-						$
-					</li>
+					<div class="container">
+						<div style="flex: 2;">
+							<p class="fragment" align="left"> Assume $\color{orange}{f_\theta}$ is <strong>linearly</strong> parametrized</p>
+							<p class="fragment">$\small \color{orange}{f_\theta}(x, u) = \phi_0(x, u) + \sum_{i=1}^d \color{orange}{\theta_i}\phi_i(x, u)\in\Real^p$</p>
+							<p class="theorem fragment" align="left"> <strong>Proposition</strong> (Confidence ellipsoid $\color{crimson}{\cC_{N,\delta}}$)
+								\[\small \mathbb{P}\left[\|\color{orange}{\theta}-\color{crimson}{\theta_{N,\lambda}}\|_{\color{crimson}{G_{N,\lambda}}} \leq \color{crimson}{\beta_N(\delta)}\right]\geq 1-\delta\]
+								<!-- $
+								\scriptsize
+								\begin{aligned}
+								\theta_{N,\lambda} & = G_{N, \lambda}^{-1} \sum_{n=1}^N \Phi_n^\top \Sigma_p^{-1} y_n,\\
+								G_{N, \lambda} &= \sum_{n=1}^N \Phi_{n}^\top\Sigma_p^{-1}\Phi_{n}  + \lambda I_d
+								\end{aligned}
+								$ -->
+							</p>
+						</div>
+						<div class="col" style="align-items: center;align-self: center;">
+							<div class="r-stack">
+								<img class="fragment fade-in-then-out" data-src="images/robust/ellipsoid_0.svg" width=100%>
+								<img class="fragment fade-in-then-out" data-src="images/robust/ellipsoid_1.svg" width=100%>
+								<img class="fragment fade-in-then-out" data-src="images/robust/ellipsoid_2.svg" width=100%>
+								<img class="fragment fade-in-then-out" data-src="images/robust/ellipsoid_3.svg" width=100%>
+							</div>
+						</div>
+					</div>
 				</section>
 				<section>
 					<header><h3>Robust planning</h3></header>
@@ -684,6 +697,13 @@
 				<section id="acting-constraints">
 					<h2>Model-free</h2><br>
 					<h4><ol start="2"><li>Acting under Adjustable Constraints</li></ol></h4>
+				</section>
+				<section>
+					<header><h3>Controlling the tradeoff</h3></header>
+					<div class="r-stack">
+						<img class="fragment fade-in-then-out" data-src="images/budgeted/tradeoff.svg">
+						<img class="fragment fade-in-then-out" data-src="images/budgeted/tradeoff-control.svg">
+					</div>
 				</section>
 				<section>
 					<header><h3><span  style="display: inline-block;" class="fragment fade-down" data-fragment-index="0">Budgeted</span> Markov Decision Process</h3></header>

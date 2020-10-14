@@ -83,9 +83,14 @@
 					</ul>
 				</section>
 				<section>
-					<header><h3>Benchmark: the <a href="http://github.com/eleurent/highway-env">highway-env</a> lib</h3></header>
-						<a class="github-button" href="https://github.com/eleurent/highway-env" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-show-count="true" aria-label="Star eleurent/highway-env on GitHub">Star</a>
-						<a class="github-button" href="https://github.com/eleurent/highway-env/fork" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork eleurent/highway-env on GitHub">Fork</a>						<div class="container">
+					<header>
+						<h3 style="display:inline-block;">Benchmark: <a href="http://github.com/eleurent/highway-env">highway-env</a></h3>
+						<div style="display:inline-block;">
+							<a class="github-button" href="https://github.com/eleurent/highway-env" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-show-count="true" aria-label="Star eleurent/highway-env on GitHub">Star</a>
+							<a class="github-button" href="https://github.com/eleurent/highway-env/fork" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork eleurent/highway-env on GitHub">Fork</a>
+						</div>
+					</header>
+						<div class="container">
 						<div class="col">
 							<img data-src="videos/highway-env/highway.gif" width="100%">
 							<img data-src="videos/highway-env/roundabout-env.gif" width="80%">
@@ -255,7 +260,7 @@
 						\end{aligned}
 					\]</p>
 				</section>
-				<section style="font-size: 90%;">
+				<section style="font-size: .7em;">
 					<header><h3>Solution 1: interval arithmetic</h3></header>
 					<p class="theorem" align="left"><strong>Lemma</strong> Given $\color{crimson}{\underline{A}\leq A(\theta)\leq\overline{A}}$ and $\color{lightskyblue}{\underline{x}(t)\leq x(t)\leq \overline{x}(t)}$,
 						<span class="fragment">
@@ -384,7 +389,7 @@
 						<p align="left" class="fragment">
 							with probability $1-\delta$,
 							\[
-							\underbrace{V(a_\star)}_{\substack{\text{optimal}\\ \text{performance}}} - \underbrace{V(a_K)}_{\substack{\text{true}\\ \text{performance}}} \leq
+							\underbrace{V(a_\star) - V(a_K)}_{\substack{\text{suboptimality}}} \leq
 							\color{crimson}{\underbrace{\Delta_\omega}_{\substack{\text{robustness to}\\ \text{disturbances}}}} + \color{lightskyblue}{\underbrace{\mathcal{O}\left(\frac{\beta_N(\delta)^2}{\lambda_{\min}(G_{N,\lambda})}\right)}_{\text{estimation error}}} +
 							\color{limegreen}{\underbrace{\mathcal{O}\left(K^{-\frac{\log 1/\gamma}{\log \kappa}}\right)}_{\text{planning error}}}
 							\]
@@ -760,7 +765,7 @@
 					</ul>
 					<br>
 					<br>
-					<p align="left" class="theorem fragment" data-fragment-index="2"><strong>Theorem</strong> For Zny BMDP $(\mathcal{S},\mathcal{A},R,C,\gamma)$ with $|\mathcal{A}|\geq 2$, $\mathcal{T}$ is <span class="red" style="font-weight: bold">not</span> a contraction.</p>
+					<p align="left" class="theorem fragment" data-fragment-index="2"><strong>Theorem</strong> For any BMDP $(\mathcal{S},\mathcal{A},R,C,\gamma)$ with $|\mathcal{A}|\geq 2$, $\mathcal{T}$ is <span class="red" style="font-weight: bold">not</span> a contraction.</p>
 				</section>
 				<section style="font-size: 90%">
 					<header><h3>How to compute $\overline{Q}^\star$?</h3></header>

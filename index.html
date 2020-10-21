@@ -308,7 +308,7 @@
 				<section style="font-size: .7em">
 					<header><h3>Novel predictor</h3></header>
 					<p align="left">Under polytopic uncertainty around <span class="orange">$A_0$ Metzler</span> \[A(\theta) = \color{orange}{A_0} + \sum_i\alpha_i\color{crimson}{\Delta A_i},\]</p>
-					<p class="fragment theorem" align="left"> <strong>Theorem (CDC 2019)</strong> The predictor
+					<p class="fragment theorem" align="left"> <strong>Theorem <a href="https://eleurent.github.io/interval-prediction/">(CDC 2019)</a></strong> The predictor
 						\[
 						\scriptsize
 						\begin{aligned}
@@ -331,7 +331,7 @@
 							\color{crimson}{\Delta A_{+}} & 0\\
 							-\color{crimson}{\Delta A_{-}} & 0
 							\end{array}\right]$
-					<p class="theorem" align="left"><strong>Theorem (CDC 2019)</strong> If there exist diagonal matrices $P$, $Q$, $Q_{+}$, $Q_{-}$, $Z_{+}$, $Z_{-}$, $\Psi_{+}$, $\Psi_{-}$, $\Psi$, $\Gamma\in\Real^{2n\times2n}$ such that
+					<p class="theorem" align="left"><strong>Theorem <a href="https://eleurent.github.io/interval-prediction/">(CDC 2019)</a></strong> If there exist diagonal matrices $P$, $Q$, $Q_{+}$, $Q_{-}$, $Z_{+}$, $Z_{-}$, $\Psi_{+}$, $\Psi_{-}$, $\Psi$, $\Gamma\in\Real^{2n\times2n}$ such that
 						<span class="fragment">
 							\[
 							\begin{aligned}
@@ -386,7 +386,7 @@
 				</section>
 				<section>
 					<header><h3>Results</h3></header>
-					<div class="theorem fragment"><strong>Theorem (NeurIPS 2020)</strong>
+					<div class="theorem fragment"><strong>Theorem <a href="https://eleurent.github.io/robust-beyond-quadratic/">(NeurIPS 2020)</a></strong>
 						<p>
 						$
 						\color{orange}{\underbrace{\hat{V}^r(u)}_{\substack{\text{surrogate}\\\text{value}}}}
@@ -402,7 +402,7 @@
 				<section style="font-size: .7em">
 					<header><h3>Bounded suboptimality</h3></header>
 					<div class="theorem">
-						<p align="left"><strong>Theorem (NeurIPS 2020)</strong> Under two conditions:
+						<p align="left"><strong>Theorem <a href="https://eleurent.github.io/robust-beyond-quadratic/">(NeurIPS 2020)</a></strong> Under two conditions:
 							<ol>
 								<li class="fragment">Lipschitz reward $R$;</li>
 								<li class="fragment">Stability condition: there exist $P>0,\,Q_0,\,\rho,\,N_0$ such that
@@ -426,7 +426,7 @@
 				<section style="font-size: .7em">
 					<header><h3>Asymptotic Near-optimality</h3></header>
 					<div class="theorem">
-						<p align="left"><strong>Corollary (NeurIPS 2020)</strong> Under an additional <strong>persistent excitation</strong> (PE) assumption:
+						<p align="left"><strong>Corollary <a href="https://eleurent.github.io/robust-beyond-quadratic/">(NeurIPS 2020)</a></strong> Under an additional <strong>persistent excitation</strong> (PE) assumption:
 							\[\exists \underline{\phi},\overline{\phi}>0: \forall n\geq n_0,\quad \underline{\phi}^2 \leq \lambda_{\min}(\Phi_{n}^\top\Sigma_{p}^{-1}\Phi_{n}) \leq \overline{\phi}^2,\]
 							<span class="fragment" data-fragment-index="1">
 								the stability condition 2. can be relaxed to the true system:
@@ -762,7 +762,7 @@
 				</section>
 				<section style="font-size: 70%">
 					<header><h3>Budgeted Optimality</h3></header>
-					<p class="theorem" align="left"><strong>Theorem</strong> (NeurIPS 2019) The optimal state-action value function verifies
+					<p class="theorem" align="left"><strong>Theorem <a href="https://budgeted-rl.github.io/">(NeurIPS 2019)</a></strong> The optimal state-action value function verifies
 						\[\color{lightskyblue}{\overline{Q}^\star}(\overline{s},\overline{a}) = \underbrace{\overline{R}(\overline{s}, \overline{a}) + \gamma \sum_{\overline{s}\in\overline{\mathcal{S}}}\overline{P}\left(\overline{s}'\middle| \overline{s},\overline{a}\right) \sum_{\overline{a}\in\overline{\mathcal{A}}} \color{orange}{\pi_{\text{g}}\left(\overline{a}'\middle| \overline{s}';\;\color{lightskyblue}{\overline{Q}^\star}\right)}\color{lightskyblue}{\overline{Q}^\star}(\overline{s}',\overline{a}')}_{\mathcal{T}\color{lightskyblue}{\overline{Q}^\star}(\overline{s},\overline{a})} \]
 						<span class="fragment">where the greedy policy $\color{orange}{\pi_\text{g}}$ is</span>
 						<span class="fragment">\[
@@ -776,7 +776,7 @@
 				</section>
 				<section>
 					<header><h3>The optimal policy</h3></header>
-					<div class="theorem"><p align="left"><strong>Proposition</strong></p>
+					<div class="theorem"><p align="left"><strong>Proposition <a href="https://budgeted-rl.github.io/">(NeurIPS 2019)</a></strong></p>
 						<ul>
 							<li class="fragment">$\color{orange}{\pi_\text{g}(\cdot\,; \overline{Q}^\star)}$ is optimal.</li>
 							<li class="fragment">$\color{orange}{\pi_\text{g}(\cdot\,; \overline{Q})}$ can be computed <strong>efficiently</strong> as a mixture $\color{limegreen}{\pi_{\text{hull}}}$ of two points on the <span class="green">convex hull</span> of $\overline{Q}$.</li>
@@ -792,11 +792,11 @@
 					</ul>
 					<br>
 					<br>
-					<p align="left" class="theorem fragment" data-fragment-index="2"><strong>Theorem</strong> For any BMDP $(\mathcal{S},\mathcal{A},R,C,\gamma)$ with $|\mathcal{A}|\geq 2$, $\mathcal{T}$ is <span class="red" style="font-weight: bold">not</span> a contraction.</p>
+					<p align="left" class="theorem fragment" data-fragment-index="2"><strong>Theorem <a href="https://budgeted-rl.github.io/">(NeurIPS 2019)</a></strong> For any BMDP with $|\mathcal{A}|\geq 2$, $\mathcal{T}$ is <span class="red" style="font-weight: bold">not</span> a contraction.</p>
 				</section>
 				<section style="font-size: 90%">
 					<header><h3>How to compute $\overline{Q}^\star$?</h3></header>
-					<p align="left" class="theorem fragment"><strong>Theorem</strong> $\mathcal{T}$ is <span class="green">a contraction</span> on the subset
+					<p align="left" class="theorem fragment"><strong>Theorem <a href="https://budgeted-rl.github.io/">(NeurIPS 2019)</a></strong> $\mathcal{T}$ is <span class="green">a contraction</span> on the subset
 						\[\{\overline{Q}: ``\color{limegreen}{Q_r} \text{ is L-Lipschitz with respect to } \color{crimson}{Q_c}"\}\]
 					with $L<1/\gamma - 1$.
 					</p>

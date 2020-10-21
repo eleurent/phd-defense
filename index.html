@@ -170,7 +170,7 @@
 							\[\mathbb{P}\left[\color{orange}{\theta}\in\color{crimson}{\mathcal{C}_{N,\delta}}\right]\geq 1-\delta\]
 						</li>
 						<li class="fragment"> Plan <strong>robustly</strong> against the worst case outcome
-							\[\color{limegreen}{\max_{\pi}} \color{crimson}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \expectedvalue \left[\sum_{t=0}^\infty \gamma^n R(x_t) \middle| \color{crimson}{f_{\theta}}, \color{limegreen}{\pi}\right]\]
+							\[\color{limegreen}{\sup_{u}} \underbrace{\color{crimson}{\inf_{\substack{\theta \in \mathcal{C}_{N,\delta}\\ \omega\in[\underline\omega,\overline\omega]}}} \expectedvalue \left[\sum_{n=0}^\infty \gamma^n R(x(t_n)) \middle| \color{limegreen}{u}, \color{crimson}{f_{\theta}}, \color{crimson}{\omega}\right]}_{\color{crimson}{V^r(u)}}\]
 						</li>
 					</ol>
 				</section>
@@ -180,7 +180,7 @@
 						<div style="flex: 2;">
 							<p class="fragment" align="left"> Assume $\color{orange}{f_\theta}$ is <strong>linearly</strong> parametrized</p>
 							<p class="fragment">$\small \color{orange}{f_\theta}(x, u) = \phi_0(x, u) + \sum_{i=1}^d \color{orange}{\theta_i}\phi_i(x, u)\in\Real^p$</p>
-							<p class="theorem fragment" align="left"> <strong>Proposition</strong> (Confidence ellipsoid $\color{crimson}{\cC_{N,\delta}}$)
+							<p class="theorem fragment" align="left"> <strong>Proposition</strong> (Confidence ellipsoid $\color{crimson}{\cC_{N,\delta}}$ from <a href="https://papers.nips.cc/paper/4417-improved-algorithms-for-linear-stochastic-bandits">Abbasi-Yadkori et al., 2011</a>)
 								\[\small \mathbb{P}\left[\|\color{orange}{\theta}-\color{crimson}{\theta_{N,\lambda}}\|_{\color{crimson}{G_{N,\lambda}}} \leq \color{crimson}{\beta_N(\delta)}\right]\geq 1-\delta\]
 								<!-- $
 								\scriptsize
@@ -204,12 +204,12 @@
 				<section>
 					<header><h3>Robust planning</h3></header>
 					<p>How to optimize the minimax objective?
-						\[\color{limegreen}{\max_{\pi}} \color{crimson}{\inf_{\theta \in \mathcal{C}_{N,\delta}}} \expectedvalue \left[\sum_{t=0}^\infty \gamma^n R(x_t) \middle| \color{crimson}{f_{\theta}}, \color{limegreen}{\pi}\right]\]
+						\[\color{limegreen}{\sup_{u}} {\color{crimson}{\inf_{\substack{\theta \in \mathcal{C}_{N,\delta}\\ \omega\in[\underline\omega,\overline\omega]}}} \expectedvalue \left[\sum_{n=0}^\infty \gamma^n R(x(t_n)) \middle| \color{limegreen}{u}, \color{crimson}{f_{\theta}}, \color{crimson}{\omega}\right]}\]
 					</p>
 					<p class="fragment" align="left">Related work</p>
 					<ul>
-						<li class="fragment cross">Robust Dynamic Programming <span class="fragment red">(finite $\mathcal{S}$)</span></li>
-						<li class="fragment check">Linear Quadratic Setting <span class="fragment green">(continuous $\mathcal{S}$)</span></li>
+						<li class="fragment cross">Robust Dynamic Programming <span class="fragment red">⮕ finite $\mathcal{S}$</span></li>
+						<li class="fragment check">Linear Quadratic Setting <span class="fragment green">⮕ continuous $\mathcal{S}$</span></li>
 					</ul>
 				</section>
 				<section>
@@ -250,7 +250,28 @@
 				</section>
 				<section>
 					<header><h3>Interval Prediction</h3></header>
-					<p align="left">Given the confidence region $\color{crimson}{\theta\in\cC_{N,\delta}}$, find \[\color{lightskyblue}{\underline x(t)} \leq x(t) \leq \color{lightskyblue}{\overline x(t)}\]</p>
+					<div class="container">
+						<div style="flex: 2;">
+							<p style="font-size: 80%">
+								<span class="fragment" data-fragment-index="0">
+								Propagate uncertainty $\color{crimson}{\theta\in\cC_{N,\delta}}$ through time and bound the reachable states
+								</span>
+								<span class="fragment" data-fragment-index="4">
+								\[\color{lightskyblue}{\underline x(t)} \leq x(t) \leq \color{lightskyblue}{\overline x(t)}\]
+								</span>
+							</p>
+						</div>
+						<div class="col r-stack">
+							<img class="fragment"  data-fragment-index="3" data-src="images/robust/interval-hull_3.svg" width=100%>
+							<img class="fragment"  data-fragment-index="0" data-src="images/robust/interval-hull_0.svg" width=100%>
+							<img class="fragment"  data-fragment-index="1" data-src="images/robust/interval-hull_1.svg" width=100%>
+							<img class="fragment"  data-fragment-index="2" data-src="images/robust/interval-hull_2.svg" width=100%>
+							<img class="fragment"  data-fragment-index="4" data-src="images/robust/interval-hull_4.svg" width=100%>
+						</div>
+					</div>
+				</section>
+				<section>
+					<header><h3>Interval Prediction</h3></header>
 					<p align="left" class="fragment"> <strong>Assumption</strong>: $f$ depends linearly on $x$
 						\[
 						\scriptsize
@@ -310,7 +331,7 @@
 							\color{crimson}{\Delta A_{+}} & 0\\
 							-\color{crimson}{\Delta A_{-}} & 0
 							\end{array}\right]$
-					<p class="theorem" align="left"><strong>Theorem (CDC 2019)</strong>If there exist diagonal matrices $P$, $Q$, $Q_{+}$, $Q_{-}$, $Z_{+}$, $Z_{-}$, $\Psi_{+}$, $\Psi_{-}$, $\Psi$, $\Gamma\in\Real^{2n\times2n}$ such that
+					<p class="theorem" align="left"><strong>Theorem (CDC 2019)</strong> If there exist diagonal matrices $P$, $Q$, $Q_{+}$, $Q_{-}$, $Z_{+}$, $Z_{-}$, $\Psi_{+}$, $\Psi_{-}$, $\Psi$, $\Gamma\in\Real^{2n\times2n}$ such that
 						<span class="fragment">
 							\[
 							\begin{aligned}
@@ -361,16 +382,22 @@
 						\color{orange}{\hat{V}^r(u)} = \sum_{n=N+1}^\infty \gamma^n \color{orange}{\min_{\color{lightskyblue}{\underline{x}(t_n)}\leq x \leq\color{lightskyblue}{\overline{x}(t_n)}}  R(x)}
 						\]
 					</p>
-					<p class="theorem fragment"><strong>Theorem (NeurIPS 2020)</strong>
-						\[
-						\small
+					<img class="fragment" data-src="images/robust/planning2.svg" width=30%>
+				</section>
+				<section>
+					<header><h3>Results</h3></header>
+					<div class="theorem fragment"><strong>Theorem (NeurIPS 2020)</strong>
+						<p>
+						$
 						\color{orange}{\underbrace{\hat{V}^r(u)}_{\substack{\text{surrogate}\\\text{value}}}}
 						\leq
-						\color{crimson}{\underbrace{{V}^r(u)}_{\substack{\text{robust}\\\text{value}}}}
-						\leq
-						\color{limegreen}{\underbrace{{V}(u)}_{\substack{\text{true}\\\text{performance}}}}
-						\]
-					</p>
+						\color{crimson}{\underbrace{{V}^r(u)}_{\substack{\text{robust}\\\text{value}}}}$
+						<span class="fragment">
+							$\leq
+							\color{limegreen}{\underbrace{{V}(u)}_{\substack{\text{true}\\\text{performance}}}}$
+						</span>
+						</p>
+					</div>
 				</section>
 				<section style="font-size: .7em">
 					<header><h3>Bounded suboptimality</h3></header>
@@ -380,7 +407,7 @@
 								<li class="fragment">Lipschitz reward $R$;</li>
 								<li class="fragment">Stability condition: there exist $P>0,\,Q_0,\,\rho,\,N_0$ such that
 									\[\forall \color{orange}{N}>N_0,\quad\begin{bmatrix}
-									\color{orange}{A_N}^\top P + P \color{orange}{A_N} + Q_0 & P|D|  \\
+									\color{orange}{A(\theta_N)}^\top P + P \color{orange}{A(\theta_N)} + Q_0 & P|D|  \\
 									|D|^\top P & -\rho I_r \\
 									\end{bmatrix}< 0;\]
 								</li>
@@ -389,7 +416,7 @@
 						<p align="left" class="fragment">
 							with probability $1-\delta$,
 							\[
-							\underbrace{V(a_\star) - V(a_K)}_{\substack{\text{suboptimality}}} \leq
+							\underbrace{V(a_\star) - V(a_K)}_{\substack{\text{subptimality}}} \leq
 							\color{crimson}{\underbrace{\Delta_\omega}_{\substack{\text{robustness to}\\ \text{disturbances}}}} + \color{lightskyblue}{\underbrace{\mathcal{O}\left(\frac{\beta_N(\delta)^2}{\lambda_{\min}(G_{N,\lambda})}\right)}_{\text{estimation error}}} +
 							\color{limegreen}{\underbrace{\mathcal{O}\left(K^{-\frac{\log 1/\gamma}{\log \kappa}}\right)}_{\text{planning error}}}
 							\]
@@ -402,7 +429,7 @@
 						<p align="left"><strong>Corollary (NeurIPS 2020)</strong> Under an additional <strong>persistent excitation</strong> (PE) assumption:
 							\[\exists \underline{\phi},\overline{\phi}>0: \forall n\geq n_0,\quad \underline{\phi}^2 \leq \lambda_{\min}(\Phi_{n}^\top\Sigma_{p}^{-1}\Phi_{n}) \leq \overline{\phi}^2,\]
 							<span class="fragment" data-fragment-index="1">
-								the stability condition 2. can be relaxed to its limit:
+								the stability condition 2. can be relaxed to the true system:
 								$$\begin{bmatrix}
 								\color{orange}{A(\theta)}^\top P + P \color{orange}{A(\theta)} + Q_0 & P|D|  \\
 								|D|^\top P & -\rho I_r \\
@@ -847,6 +874,7 @@
 		// - https://revealjs.com/config/
 		Reveal.initialize({
 			hash: true,
+			slideNumber: true,
 			math: {
 				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
 				config: 'TeX-AMS_HTML-full',

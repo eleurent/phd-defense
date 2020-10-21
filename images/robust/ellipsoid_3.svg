@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -41,7 +41,7 @@
      id="namedview208"
      showgrid="false"
      inkscape:zoom="1.2291667"
-     inkscape:cx="80.926173"
+     inkscape:cx="-61.446704"
      inkscape:cy="343.56535"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
@@ -311,12 +311,12 @@
      inkscape:connector-curvature="0"
      id="path163"
      d="m 281.39062,224.54297 c 0.39844,0 0.78125,-0.16016 1.0625,-0.44141 0.28125,-0.28125 0.4375,-0.66016 0.4375,-1.05859 0,-0.39844 -0.15625,-0.78125 -0.4375,-1.0625 -0.28125,-0.28125 -0.66406,-0.4375 -1.0625,-0.4375 -0.39843,0 -0.77734,0.15625 -1.05859,0.4375 -0.28125,0.28125 -0.44141,0.66406 -0.44141,1.0625 0,0.39843 0.16016,0.77734 0.44141,1.05859 0.28125,0.28125 0.66016,0.44141 1.05859,0.44141 z m 0,0"
-     style="fill:#4d85e4;fill-opacity:1;fill-rule:nonzero;stroke:#4d85e3;stroke-width:5.25000011;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" />
+     style="fill:#ffa500;fill-opacity:1;fill-rule:nonzero;stroke:#ffa500;stroke-width:5.25000011;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" />
   <path
      inkscape:connector-curvature="0"
      id="path175"
      d="m 352.4198,16.12329 c 0.64886,0 1.26594,-0.260829 1.72397,-0.71886 0.45803,-0.45803 0.71886,-1.081457 0.71886,-1.72397 0,-0.64888 -0.26083,-1.272307 -0.71886,-1.730337 -0.45803,-0.458031 -1.07511,-0.712492 -1.72397,-0.712492 -0.64888,0 -1.27231,0.254461 -1.73034,0.712492 -0.45803,0.45803 -0.71249,1.081457 -0.71249,1.730337 0,0.642513 0.25446,1.26594 0.71249,1.72397 0.45803,0.458031 1.08146,0.71886 1.73034,0.71886 z m 0,0"
-     style="fill:#4d85e4;fill-opacity:1;fill-rule:nonzero;stroke:#4d85e3;stroke-width:5.25000011;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" />
+     style="fill:#ffa500;fill-opacity:1;fill-rule:nonzero;stroke:#ffa500;stroke-width:5.25000011;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none" />
   <g
      id="g179"
      style="fill:#ffffff;fill-opacity:1"

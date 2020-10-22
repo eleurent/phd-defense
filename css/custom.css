@@ -28,6 +28,10 @@
 	/*color: #64bbe3;*/
 }
 
+.reveal .slides section .fragment.highlight-blue.visible {
+	color: lightskyblue;
+}
+
 /* Two-columns */
 .container{
     display: flex;

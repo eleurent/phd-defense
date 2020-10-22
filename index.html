@@ -138,9 +138,14 @@
 				<section>
 					<header><h3>Principle</h3></header>
 					<p>$$\dot{x}(t) = \color{lightskyblue}{f}\left(x(t), u(t)\right) + \omega(t)$$</p>
-					<ol>
-						<li class="fragment">Learn a model of the dynamics $$\min_{\color{orange}{\theta}} \mathcal{L}(\color{orange}{f_{\theta}}, \color{lightskyblue}{f})$$</li>
-						<li class="fragment">Use it to plan $$\max_{\color{limegreen}{\pi}} \expectedvalue\left[ \sum_{t}\gamma^t R(x(t))\middle| \color{orange}{f_{\theta}}, \color{limegreen}{\pi} \right]$$</li>
+					<ol style="list-style-type: none;">
+						<li class="fragment" data-fragment-index="1">1. Learn a model of the dynamics $$\min_{\color{orange}{\theta}} \mathcal{L}(\color{orange}{f_{\theta}}, \color{lightskyblue}{f})$$</li>
+						<li class="fragment" data-fragment-index="0">
+								<div class="r-stack">
+									<p class="fragment fade-in-then-semi-out" data-fragment-index="0"><span class="fragment fade-out" data-fragment-index="2">We want $$\max_{\color{limegreen}{\pi}} \expectedvalue\left[ \sum_{t}\gamma^t R(x(t))\middle| \color{lightskyblue}{f}, \color{limegreen}{\pi} \right]$$</span></p>
+									<p class="fragment fade-in-then-out" data-fragment-index="2">2. Use it to plan $$\max_{\color{limegreen}{\pi}} \expectedvalue\left[ \sum_{t}\gamma^t R(x(t))\middle| \color{orange}{f_{\theta}}, \color{limegreen}{\pi} \right]$$</p>
+							</div>
+						</li>
 					</ol>
 				</section>
 				<section>
@@ -272,14 +277,17 @@
 				</section>
 				<section>
 					<header><h3>Interval Prediction</h3></header>
-					<p align="left" class="fragment"> <strong>Assumption</strong>: $f$ depends linearly on $x$
-						\[
-						\scriptsize
-						\begin{aligned}
-						\dot{{x}}(t) & = \color{orange}{A(\theta)}x(t) + Bu(t) + D\omega(t), \text{ where}\\
-						\color{orange}{A(\theta)} & = A_0 + \sum_{i=1}^d\color{orange}{\theta_i}\phi_i \\
-						\end{aligned}
-					\]</p>
+					<div class="fragment"><p><span class="red">Challenge</span></p><p>Propagate uncertainty from $x(t)$ to $x(t+dt)$</p>
+					</div>
+					<div class="fragment">
+					<p><strong>Assumption</strong></p>
+					<p align="left"> $f$ depends linearly on <span class="blue">$x$</span></p>
+					<p>
+						<span>
+						$\dot{{x}}(t) = \color{orange}{A(\theta)}\color{\lightskyblue}{x(t)} + Bu(t) + D\omega(t),$</span><br><span class="fragment">
+						where $~\color{orange}{A(\theta)}  = A_0 + \sum_{i=1}^d\color{orange}{\theta_i}\phi_i$
+					</p>
+					</div>
 				</section>
 				<section style="font-size: .7em;">
 					<header><h3>Solution 1: interval arithmetic</h3></header>

@@ -28,7 +28,11 @@
 				</p>
 				<p>Friday, October 30<sup>th</sup>, 2020</p>
 				<footer>
+					<img data-src="images/univ.png" height="50">
 					<img data-src="images/inria.png" height="50">
+					<img data-src="images/cnrs.png" height="50">
+					<img data-src="images/centrale.png" height="50">
+					<img data-src="images/cristal.svg" height="50">
 					<img data-src="images/renault.png" height="50">
 				</footer>
 			</section>
@@ -196,7 +200,7 @@
 						<div style="flex: 2;">
 							<p class="fragment" align="left"> Assume $\color{orange}{f_\theta}$ is <strong>linearly</strong> parametrized</p>
 							<p class="fragment">$\small \color{orange}{f_\theta}(x, u) = \phi_0(x, u) + \sum_{i=1}^d \color{orange}{\theta_i}\phi_i(x, u)\in\Real^p$</p>
-							<p class="theorem fragment" align="left"> <strong>Proposition</strong> (Confidence ellipsoid $\color{crimson}{\cC_{N,\delta}}$ from <a href="https://papers.nips.cc/paper/4417-improved-algorithms-for-linear-stochastic-bandits">Abbasi-Yadkori et al., 2011</a>)
+							<p class="theorem fragment" align="left"> <strong>Proposition</strong> (Confidence ellipsoid $\color{crimson}{\cC_{N,\delta}}$ from <a href="https://papers.nips.cc/paper/4417-improved-algorithms-for-linear-stochastic-bandits">Abbasi-Yadkori <em>et al.</em>, 2011</a>)
 								\[\small \mathbb{P}\left[\|\color{orange}{\theta}-\color{crimson}{\theta_{N,\lambda}}\|_{\color{crimson}{G_{N,\lambda}}} \leq \color{crimson}{\beta_N(\delta)}\right]\geq 1-\delta\]
 								<!-- $
 								\scriptsize
@@ -237,7 +241,7 @@
 								<span class="fragment" data-fragment-index="0">$f(x, u) = Ax + Bu$</span>
 								<span class="fragment" data-fragment-index="1"><span class="fragment highlight-red" data-fragment-index="3">$R(x, u) = -x^\top Qx - u^\top R u$</span></span>
 							</p>
-							<p class="fragment" data-fragment-index="2" align="center"><a href="https://arxiv.org/abs/1710.01688">(Dean et al., 2018)</a><br>cast <span class="green">$\max$</span> <span class="red">$\min$</span> as an <span class="blue">SDP</span></p>
+							<p class="fragment" data-fragment-index="2" align="center"><a href="https://arxiv.org/abs/1710.01688">(Dean <em>et al.</em>, 2018)</a><br>cast <span class="green">$\max$</span> <span class="red">$\min$</span> as an <span class="blue">SDP</span></p>
 						</div>
 						<div class="col fragment" data-fragment-index="3">
 							<figure>
@@ -249,7 +253,10 @@
 				</section>
 				<section>
 					<header><h3>Obstacle avoidance tasks</h3></header>
-					<img data-src="images/robust/non-convex.svg" width="75%">
+					<div class="r-stack">
+					<img class="fragment fade-in-then-out" data-src="images/robust/non-convex_0.svg" width="75%">
+					<img class="fragment" data-src="images/robust/non-convex.svg" width="75%">
+					</div>
 					<li class="fragment fade-up warning">Handle <span class="red">non-convex</span>, <span class="red">non-smooth</span> rewards</p>
 				</section>
 				<section>
@@ -302,7 +309,7 @@
 				</section>
 				<section style="font-size: .7em;">
 					<header><h3>Solution 1: interval arithmetic</h3></header>
-					<p class="theorem" align="left"><strong>Lemma</strong> <a href="https://hal.inria.fr/hal-00701643">(Efimov et al., 2012)</a><br>Given $\color{crimson}{\underline{A}\leq A(\theta)\leq\overline{A}}$ and $\color{lightskyblue}{\underline{x}(t)\leq x(t)\leq \overline{x}(t)}$,
+					<p class="theorem" align="left"><strong>Lemma</strong> <a href="https://hal.inria.fr/hal-00701643">(Efimov <em>et al.</em>, 2012)</a><br>Given $\color{crimson}{\underline{A}\leq A(\theta)\leq\overline{A}}$ and $\color{lightskyblue}{\underline{x}(t)\leq x(t)\leq \overline{x}(t)}$,
 						<span class="fragment">
 							\[
 							\scriptsize
@@ -768,7 +775,7 @@
 				<section>
 					<header>
 						<h3><span  style="display: inline-block;" class="fragment fade-down" data-fragment-index="0">Budgeted</span> Markov Decision Process</h3>
-						<p style="margin-top:-20px;" align="right"><a class="fragment" data-fragment-index="0" href="https://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/45291.pdf">(Boutilier et al., 2016)</a>
+						<p style="margin-top:-20px;" align="right"><a class="fragment" data-fragment-index="0" href="https://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/45291.pdf">(Boutilier <em>et al.</em>, 2016)</a>
 						</p>
 					</header>
 					<ul>

@@ -65,7 +65,7 @@
 				<section>
 					<header><h3>Failure modes</h3></header>
 					<video data-autoplay muted loop data-src="videos/introduction/merge.mp4" type="video/mp4"></video>
-					<p>Access ramp</p>
+					<p>Insertion lane</p>
 				</section>
 				<section>
 					<header><h3>Failure modes</h3></header>
@@ -106,16 +106,16 @@
 				<section>
 					<header><h3>Outline</h3></header>
 					<ul>
-						<li class="fragment">Model-based
+						<li class="fragment" data-fragment-index="0">Model-based
 							<ol>
-								<li class="fragment fade-in-then-semi-out"><a href="#/planning">Planning Fast by Hoping for the Best</a></li>
-								<li class="fragment"><a href="#/preparing-worst">Preparing for the Worst</a></li>
+								<li class="fragment fade-in-then-semi-out" data-fragment-index="3"><a href="#/planning">Planning Fast</a></li>
+								<li class="fragment" data-fragment-index="4"><a href="#/preparing-worst">Preparing for the Worst</a></li>
 							</ol>
 						</li>
-						<li class="fragment">Model-free
+						<li class="fragment" data-fragment-index="1">Model-free
 							<ol>
-								<li class="fragment"><a href="#/social-interactions">Considering Social Interactions</a></li>
-								<li class="fragment"><a href="#/acting-constraints">Acting under Adjustable Constraints</a></li>
+								<li class="fragment" data-fragment-index="5"><a href="#/social-interactions">Considering Social Interactions</a></li>
+								<li class="fragment" data-fragment-index="6"><a href="#/acting-constraints">Acting under Adjustable Constraints</a></li>
 							</ol>
 						</li>
 					</ul>
@@ -127,6 +127,11 @@
 				<section id="planning">
 					<h2 style="color:grey">Model-based</h2><br>
 					<h4><ol><li style="color:grey">Planning fast</li></ol></h4>
+					<br>
+					<ul style="margin:0;">
+						<li style="color:grey; display: inline;"><a href="https://eleurent.github.io/kl-olop/">(ECML 2019)</a>, </li>
+						<li style="color:grey; display: inline;"><a href="http://www.edouardleurent.com/publication/graph-search/mcgs.pdf">(ACML 2020)</a></li>
+					</ul>
 				</section>
 			</section>
 
@@ -134,6 +139,12 @@
 				<section id="preparing-worst">
 					<h2>Model-based</h2><br>
 					<h4><ol start="2"><li>Preparing for the Worst</li></ol></h4>
+					<br>
+					<ul style="margin:0;">
+						<li style="display: inline;"><a href="https://eleurent.github.io/interval-prediction/">(CDC 2019)</a>, </li>
+						<li style="display: inline;"><a href="https://arxiv.org/abs/2007.10401/">(CDC 2020)</a>, </li>
+						<li style="display: inline;"><a href="https://eleurent.github.io/robust-beyond-quadratic/">(NeurIPS 2020)</a></li>
+					</ul>
 				</section>
 				<section>
 					<header><h3>Principle</h3></header>
@@ -213,7 +224,7 @@
 					</p>
 					<p class="fragment" align="left">Related work</p>
 					<ul>
-						<li class="fragment cross">Robust Dynamic Programming <span class="fragment red">⮕ finite $\mathcal{S}$</span></li>
+						<li class="fragment cross">Robust Dynamic Programming <a href="https://pubsonline.informs.org/doi/abs/10.1287/moor.1040.0129">(Iyengar, 2005)</a> <span class="fragment red"><br>⮕ finite $\mathcal{S}$</span></li>
 						<li class="fragment check">Linear Quadratic Setting <span class="fragment green">⮕ continuous $\mathcal{S}$</span></li>
 					</ul>
 				</section>
@@ -226,7 +237,7 @@
 								<span class="fragment" data-fragment-index="0">$f(x, u) = Ax + Bu$</span>
 								<span class="fragment" data-fragment-index="1"><span class="fragment highlight-red" data-fragment-index="3">$R(x, u) = -x^\top Qx - u^\top R u$</span></span>
 							</p>
-							<p class="fragment" data-fragment-index="2" align="center">[Dean et al., 2019]<br>cast <span class="green">$\max$</span> <span class="red">$\min$</span> as an <span class="blue">SDP</span></p>
+							<p class="fragment" data-fragment-index="2" align="center"><a href="https://arxiv.org/abs/1710.01688">(Dean et al., 2018)</a><br>cast <span class="green">$\max$</span> <span class="red">$\min$</span> as an <span class="blue">SDP</span></p>
 						</div>
 						<div class="col fragment" data-fragment-index="3">
 							<figure>
@@ -291,7 +302,7 @@
 				</section>
 				<section style="font-size: .7em;">
 					<header><h3>Solution 1: interval arithmetic</h3></header>
-					<p class="theorem" align="left"><strong>Lemma</strong> Given $\color{crimson}{\underline{A}\leq A(\theta)\leq\overline{A}}$ and $\color{lightskyblue}{\underline{x}(t)\leq x(t)\leq \overline{x}(t)}$,
+					<p class="theorem" align="left"><strong>Lemma</strong> <a href="https://hal.inria.fr/hal-00701643">(Efimov et al., 2012)</a><br>Given $\color{crimson}{\underline{A}\leq A(\theta)\leq\overline{A}}$ and $\color{lightskyblue}{\underline{x}(t)\leq x(t)\leq \overline{x}(t)}$,
 						<span class="fragment">
 							\[
 							\scriptsize
@@ -325,7 +336,6 @@
 						\end{aligned}
 						\]
 					ensures the inclusion property.</p>
-					<!-- <aside id="references" class="references">[CDC 2019]</aside> -->
 				</section>
 				<section style="font-size: .7em">
 					<header><h3>Novel predictor: stability</h3></header>
@@ -357,7 +367,7 @@
 							\]
 						</span>
 						<span class="fragment">
-							then the predictor is <strong>input-to-state stable</strong> <em>w.r.t.</em> the disturbance $\underline{\omega}$, $\overline{\omega}$.
+							then the predictor is <strong>input-to-state stable</strong> with the disturbance $\underline{\omega}$, $\overline{\omega}$.
 						</span>
 					</p>
 				</section>
@@ -652,6 +662,11 @@
 				<section id="social-interactions">
 					<h2>Model-free</h2><br>
 					<h4><ol><li>Considering Social Interactions</li></ol></h4>
+					<br>
+					<ul style="margin:0;">
+						<li style="display: inline;"><a href="https://eleurent.github.io/social-attention/">(ML4AD at NeurIPS 2019)</a></li>
+					</ul>
+
 				</section>
 				<section>
 					<header><h3>Q-learning</h3></header>
@@ -737,6 +752,11 @@
 				<section id="acting-constraints">
 					<h2>Model-free</h2><br>
 					<h4><ol start="2"><li>Acting under Adjustable Constraints</li></ol></h4>
+					<br>
+					<ul style="margin:0;">
+						<li style="display: inline;"><a href="https://budgeted-rl.github.io/">(NeurIPS 2019)</a></li>
+					</ul>
+
 				</section>
 				<section>
 					<header><h3>Controlling the tradeoff</h3></header>
@@ -746,7 +766,11 @@
 					</div>
 				</section>
 				<section>
-					<header><h3><span  style="display: inline-block;" class="fragment fade-down" data-fragment-index="0">Budgeted</span> Markov Decision Process</h3></header>
+					<header>
+						<h3><span  style="display: inline-block;" class="fragment fade-down" data-fragment-index="0">Budgeted</span> Markov Decision Process</h3>
+						<p style="margin-top:-20px;" align="right"><a class="fragment" data-fragment-index="0" href="https://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/45291.pdf">(Boutilier et al., 2016)</a>
+						</p>
+					</header>
 					<ul>
 						<li style="display: inline-block; margin: 10px;">Dynamics $P$,</li>
 						<li style="display: inline-block; margin: 10px;" class="green">Rewards $R$,</li>

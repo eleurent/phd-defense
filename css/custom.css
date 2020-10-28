@@ -130,14 +130,17 @@ li.hope {
 	font-size: 0.4em;
 }
 
-/*ul li {
-	margin: .8em 0em;
-	line-height: 1.2em;
+
+/* page numbers style */
+.reveal .slide-number {
+	bottom: 8px;
+	left: 8px;
+	right: inherit;
+	top: inherit;
+	font-size: 25px;
 }
 
-ul.tight li, .definition li, li ul li {
-	margin: 0.1em;
-}*/
+
 
 
 /* Allow spans to grow and shrink, see https://github.com/hakimel/reveal.js/pull/2338/files */
@@ -167,3 +170,5 @@ ul.tight li, .definition li, li ul li {
 .reveal .slides section .fragment.barred.visible {
 	color:grey;
 }
+
+

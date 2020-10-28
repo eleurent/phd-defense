@@ -161,13 +161,13 @@
 				</section>
 				<section>
 					<header><h3>Principle</h3></header>
-					<p>$$\dot{x}(t) = \color{lightskyblue}{f}\left(x(t), u(t)\right) + \omega(t)$$</p>
+					<p>$$\dot{x}(t) = \color{lightskyblue}{f}(\overset{state}{x(t)}, \overset{action}{u(t)}) + \overset{disturbance}{\omega(t)}$$</p>
 					<ol style="list-style-type: none;">
-						<li class="fragment" data-fragment-index="1">1. Learn a model of the dynamics $$\min_{\color{orange}{\theta}} \mathcal{L}(\color{orange}{f_{\theta}}, \color{lightskyblue}{f})$$</li>
+						<li class="fragment" data-fragment-index="1">1. Learn a model of the dynamics <br><p align="center">$\min_{\color{orange}{\theta}} \mathcal{L}(\color{orange}{f_{\theta}}, \color{lightskyblue}{f})$</p></li>
 						<li class="fragment" data-fragment-index="0">
 								<div class="r-stack">
-									<p class="fragment fade-in-then-semi-out" data-fragment-index="0"><span class="fragment fade-out" data-fragment-index="2">We want $$\max_{\color{limegreen}{\pi}} \expectedvalue\left[ \sum_{t}\gamma^t R(x(t))\middle| \color{lightskyblue}{f}, \color{limegreen}{\pi} \right]$$</span></p>
-									<p class="fragment fade-in-then-out" data-fragment-index="2">2. Use it to plan $$\max_{\color{limegreen}{\pi}} \expectedvalue\left[ \sum_{t}\gamma^t R(x(t))\middle| \color{orange}{f_{\theta}}, \color{limegreen}{\pi} \right]$$</p>
+									<p class="fragment fade-in-then-semi-out" data-fragment-index="0"><span class="fragment fade-out" data-fragment-index="2">We want $$\max_{\color{limegreen}{\pi}} \expectedvalue\left[ \sum_{t}\gamma^t \overset{reward}{R(x(t))}\middle| \color{lightskyblue}{f}, \color{limegreen}{\overset{policy}{\pi}} \right]$$</span></p>
+									<p class="fragment fade-in-then-out" data-fragment-index="2">2. Use it to plan $$\max_{\color{limegreen}{\pi}} \expectedvalue\left[ \sum_{t}\gamma^t \overset{reward}{R(x(t))}\middle| \color{orange}{f_{\theta}}, \color{limegreen}{\overset{policy}{\pi}} \right]$$</p>
 							</div>
 						</li>
 					</ol>
@@ -195,7 +195,7 @@
 				<section>
 					<header><h3>How to tackle model bias?</h3></header>
 					<ol>
-						<li class="fragment"> Build a confidence <strong>region</strong> for the dynamics
+						<li class="fragment"> Build a confidence <strong>region</strong> $\color{crimson}{\mathcal{C}_{N,\delta}}$ for the dynamics
 							\[\mathbb{P}\left[\color{orange}{\theta}\in\color{crimson}{\mathcal{C}_{N,\delta}}\right]\geq 1-\delta\]
 						</li>
 						<li class="fragment"> Plan <strong>robustly</strong> against the worst case outcome

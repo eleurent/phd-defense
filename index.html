@@ -938,6 +938,24 @@
 					</ul>
 					</small>
 				</section>
+				<section>
+					<header><h3>Perspectives</h3></header>
+					<ul>
+						<li class="fragment">Model-based
+							<ul>
+								<li style="list-style: none">Relax perfect perception</li> <!-- Difficulty depend on the observation model, adding bounded observation noise is easy to integrate, but oclusions are more difficult -->
+								<li style="list-style: none">Relax linear dynamics</li> <!-- SOTA for motion forecasting NNs, difficult to have guarantees, but output probabilistic predicions -->
+							</ul>
+						</li>
+						<li class="fragment">Model-free
+							<ul>
+								<li style="list-style: none">Exploration in continuous spaces</li> <!-- In our experiments, naive eps greedy. Finite state space = count-based, kernels? The cumulative regret is not suited. Either we learn in simulation: pure exploration. Either it is a deployed system and risk aversion, powerful tools like CVaR-->
+								<li style="list-style: none">General-purpose policy</li> <!-- specific to highway, intersection, etc. -> condition on a desired goal -->
+							</ul>
+						<li class="fragment">Increase evaluation complexity</li> <!-- environments are quite simple. more diverse agents and behaviours, scenes, -->
+						<li class="fragment">Get my driver's license</li>
+					</ul>
+				</section>
 				<section class="title" data-background-video="videos/traffic_blur.mp4" data-background-video-loop data-background-video-muted>
 					<h2>Thank you</h2>
 				</section>

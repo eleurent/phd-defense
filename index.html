@@ -50,7 +50,7 @@
 					<div class="r-stack">
 					<figure class="fragment fade-in-then-out" data-fragment-index="0">
 						<img data-src="images/introduction/tcr.jpg" width="100%">
-						<figcaption>Renault ADAS Department, Guyancourt</figcaption>
+						<figcaption>ADAS Department, Renault, Guyancourt</figcaption>
 					</figure>
 					<figure class="fragment fade-in-then-out" data-fragment-index="1">
 						<video data-autoplay muted loop data-src="videos/introduction/acc.mp4" type="video/mp4"></video>
@@ -948,11 +948,11 @@
 							</ul>
 						</li>
 						<li class="fragment">Model-free
-							<ul>
-								<li style="list-style: none">Exploration in continuous spaces</li> <!-- In our experiments, naive eps greedy. Finite state space = count-based, kernels? The cumulative regret is not suited. Either we learn in simulation: pure exploration. Either it is a deployed system and risk aversion, powerful tools like CVaR-->
-								<li style="list-style: none">General-purpose policy</li> <!-- specific to highway, intersection, etc. -> condition on a desired goal -->
-							</ul>
-						<li class="fragment">Increase evaluation complexity</li> <!-- environments are quite simple. more diverse agents and behaviours, scenes, -->
+						<ul>
+							<li style="list-style: none">Exploit scene information</li>
+							<li style="list-style: none">Exploration in continuous spaces</li>
+						</ul>
+						<li class="fragment">Stronger evaluation process</li>
 						<li class="fragment">Get my driver's license</li>
 					</ul>
 				</section>
